@@ -26,6 +26,8 @@ public class PlayerController : NetworkBehaviour
     private NetworkVariable<int> playerHealth = new(100);
     private float maxHealthBarWidth;
 
+    private NetworkVariable<float> playerHealthBarFillValue = new(0);
+
     //private NetworkVariable<string> playerName = new NetworkVariable<string>();
 
     private void Start()
@@ -33,13 +35,18 @@ public class PlayerController : NetworkBehaviour
         //playerName.Value = Player.playerName;
 
         //nameText.text = playerName.Value;
-        //healthBarFill = healthBar.transform.GetChild(1).transform;
-        //maxHealthBarWidth = healthBarFill.localScale.x;
+        healthBarFill = healthBar.transform.GetChild(1).transform;
+        maxHealthBarWidth = healthBarFill.localScale.x;
     }
 
     private void Update()
     {
         ControlPlayer();
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        if (!IsServer) playerHealthBarFillValue.OnValueChanged += DecreaseHealthBar;
     }
 
     private void ControlPlayer()
@@ -51,7 +58,7 @@ public class PlayerController : NetworkBehaviour
         if (Input.GetKey(KeyCode.A))
         {  
             transform.eulerAngles = new Vector3(0, 180, 0);
-            healthBar.transform.eulerAngles = new Vector3(0, 0, 0);
+            //healthBar.transform.eulerAngles = new Vector3(0, 0, 0);
 
             move.x -= 2f;
 
@@ -60,7 +67,7 @@ public class PlayerController : NetworkBehaviour
         else if(Input.GetKey(KeyCode.D))
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
-            healthBar.transform.eulerAngles = new Vector3(0, 0, 0);
+            //healthBar.transform.eulerAngles = new Vector3(0, 0, 0);
 
             move.x += 2f;
 
@@ -109,8 +116,8 @@ public class PlayerController : NetworkBehaviour
         playerHealth.Value = playerHealth.Value - damage;
         Debug.Log("PLAYER HEALTH: " + playerHealth.Value);
 
-        //float healthFill = (maxHealthBarWidth / maxPlayerHealth) * playerHealth.Value;
-        //healthBarFill.localScale = new Vector3(healthFill, healthBarFill.localScale.y, healthBarFill.localScale.z);
+        playerHealthBarFillValue.Value = (maxHealthBarWidth / maxPlayerHealth) * playerHealth.Value;
+        healthBarFill.localScale = new Vector3(playerHealthBarFillValue.Value, healthBarFill.localScale.y, healthBarFill.localScale.z);
 
         AnimatePlayerServerRpc("Hurt");
 
@@ -118,6 +125,11 @@ public class PlayerController : NetworkBehaviour
         {
             AnimatePlayerServerRpc("Die");
         }
+    }
+
+    private void DecreaseHealthBar(float previousValue, float newValue)
+    {
+        healthBarFill.localScale = new Vector3(playerHealthBarFillValue.Value, healthBarFill.localScale.y, healthBarFill.localScale.z);
     }
 
     [ServerRpc]
