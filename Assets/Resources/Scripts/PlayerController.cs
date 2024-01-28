@@ -1,12 +1,15 @@
 using System.Collections;
 using UnityEngine;
 using Unity.Netcode;
+using TMPro;
+using Unity.Netcode.Components;
 
 public class PlayerController : NetworkBehaviour
 {
     [SerializeField] public Transform firePoint;
     [SerializeField] public GameObject healthBar;
     [SerializeField] public GameObject bulletPrefab;
+    [SerializeField] public TextMeshProUGUI nameText;
 
     Transform healthBarFill;
     private enum PlayerState
@@ -14,27 +17,28 @@ public class PlayerController : NetworkBehaviour
         Idle,
         Walk,
         Hurt,
-        Die,
-        Revive
+        Die
     }
 
     private NetworkVariable<PlayerState> state = new NetworkVariable<PlayerState>();
 
     private int maxPlayerHealth = 100;
-    private NetworkVariable<int> playerHealth = new(0);
+    private NetworkVariable<int> playerHealth = new(100);
     private float maxHealthBarWidth;
+
+    //private NetworkVariable<string> playerName = new NetworkVariable<string>();
 
     private void Start()
     {
-        healthBarFill = healthBar.transform.GetChild(1).transform;
-        maxHealthBarWidth = healthBarFill.localScale.x;
+        //playerName.Value = Player.playerName;
 
-        playerHealth.Value = maxPlayerHealth;
+        //nameText.text = playerName.Value;
+        //healthBarFill = healthBar.transform.GetChild(1).transform;
+        //maxHealthBarWidth = healthBarFill.localScale.x;
     }
 
     private void Update()
     {
-        AnimatePlayer();
         ControlPlayer();
     }
 
@@ -45,13 +49,13 @@ public class PlayerController : NetworkBehaviour
         Vector3 move = new Vector3(0, 0, 0);
 
         if (Input.GetKey(KeyCode.A))
-        {
+        {  
             transform.eulerAngles = new Vector3(0, 180, 0);
             healthBar.transform.eulerAngles = new Vector3(0, 0, 0);
 
             move.x -= 2f;
 
-            UpdatePlayerStateServerRpc(PlayerState.Walk);
+            AnimatePlayerServerRpc("Walk");
         }
         else if(Input.GetKey(KeyCode.D))
         {
@@ -60,11 +64,11 @@ public class PlayerController : NetworkBehaviour
 
             move.x += 2f;
 
-            UpdatePlayerStateServerRpc(PlayerState.Walk);
+            AnimatePlayerServerRpc("Walk");
         }
         else
         {
-            UpdatePlayerStateServerRpc(PlayerState.Idle);
+            AnimatePlayerServerRpc("Idle");
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -76,24 +80,25 @@ public class PlayerController : NetworkBehaviour
         transform.position += move * speed * Time.deltaTime;
     }
 
-    private void AnimatePlayer()
+    [ServerRpc(RequireOwnership = false)]
+    private void AnimatePlayerServerRpc(string animation)
     {
-        if(state.Value == PlayerState.Idle)
+        if(animation == "Idle")
         {
-            gameObject.GetComponent<Animator>().SetBool("isWalking", false);
+            gameObject.GetComponent<Animator>().SetBool("isWalking", false) ;
         }
-        else if(state.Value == PlayerState.Walk)
+        else if (animation == "Walk")
         {
             gameObject.GetComponent<Animator>().SetBool("isWalking", true);
         }
-        else if (state.Value == PlayerState.Hurt)
+        else if (animation == "Hurt")
         {
-            gameObject.GetComponent<Animator>().SetTrigger("Hurt");
+            gameObject.GetComponent<NetworkAnimator>().SetTrigger("Hurt");
         }
-        else if (state.Value == PlayerState.Die)
+        else if (animation == "Die")
         {
-            gameObject.GetComponent<Animator>().SetTrigger("Die");
-
+            gameObject.GetComponent<NetworkAnimator>().SetTrigger("Die");
+            
             StartCoroutine(Wait());
         }
     }
@@ -104,14 +109,14 @@ public class PlayerController : NetworkBehaviour
         playerHealth.Value = playerHealth.Value - damage;
         Debug.Log("PLAYER HEALTH: " + playerHealth.Value);
 
-        float healthFill = (maxHealthBarWidth / maxPlayerHealth) * playerHealth.Value;
-        healthBarFill.localScale = new Vector3(healthFill, healthBarFill.localScale.y, healthBarFill.localScale.z);
+        //float healthFill = (maxHealthBarWidth / maxPlayerHealth) * playerHealth.Value;
+        //healthBarFill.localScale = new Vector3(healthFill, healthBarFill.localScale.y, healthBarFill.localScale.z);
 
-        UpdatePlayerStateServerRpc(PlayerState.Hurt);
+        AnimatePlayerServerRpc("Hurt");
 
         if (playerHealth.Value <= 0)
         {
-            UpdatePlayerStateServerRpc(PlayerState.Die);
+            AnimatePlayerServerRpc("Die");
         }
     }
 
@@ -120,12 +125,6 @@ public class PlayerController : NetworkBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<NetworkObject>().Spawn();
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    private void UpdatePlayerStateServerRpc(PlayerState playerState)
-    {
-        state.Value = playerState;
     }
 
     IEnumerator Wait()

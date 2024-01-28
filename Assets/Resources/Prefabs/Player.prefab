@@ -590,6 +590,7 @@ MonoBehaviour:
   firePoint: {fileID: 517008945842470598}
   healthBar: {fileID: 8741579405042930207}
   bulletPrefab: {fileID: 4338754427167376062, guid: c226154bda311e547aa381f3eb74801a, type: 3}
+  nameText: {fileID: 142385746217449433}
 --- !u!114 &199854915222384865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,7 +610,7 @@ MonoBehaviour:
   SyncRotAngleX: 0
   SyncRotAngleY: 1
   SyncRotAngleZ: 0
-  SyncScaleX: 0
+  SyncScaleX: 1
   SyncScaleY: 0
   SyncScaleZ: 0
   PositionThreshold: 0.001
@@ -709,12 +710,12 @@ GameObject:
   - component: {fileID: 1742442250104386633}
   - component: {fileID: 4464537691417540424}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7190758923026954707
 RectTransform:
   m_ObjectHideFlags: 0
@@ -781,7 +782,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &4464537691417540424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,7 +846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9039798476244705215
 Transform:
   m_ObjectHideFlags: 0

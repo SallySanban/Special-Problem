@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.Playables;
+using Unity.Netcode.Components;
+using System;
 
 public class BossController : NetworkBehaviour
 {
@@ -20,6 +22,8 @@ public class BossController : NetworkBehaviour
     public float attackRange = 1.3f;
     private int damage = 20;
 
+    private NetworkVariable<float> bossHealthBarFillValue = new(0);
+
     private void Start()
     {
         bossHealthBar = GameObject.FindGameObjectWithTag("Boss Health Bar");
@@ -28,6 +32,11 @@ public class BossController : NetworkBehaviour
         maxBossHealthBarWidth = bossHealthBarFill.localScale.x;
 
         bossHealth = maxBossHealth;
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        if (!IsServer) bossHealthBarFillValue.OnValueChanged += DecreaseHealthBar;
     }
 
     public void LookAtPlayer(Transform player)
@@ -51,29 +60,40 @@ public class BossController : NetworkBehaviour
 
     public void AttackPlayer()
     {
+        if (!IsServer) return;
+
         Collider2D hitPlayer = Physics2D.OverlapCircle(attackPoint.position, attackRange, LayerMask.GetMask("Player"));
 
-        if (hitPlayer != null)
+        if (hitPlayer == null) return;
+
+        if (hitPlayer.TryGetComponent(out PlayerController playerController))
         {
-            hitPlayer.GetComponent<PlayerController>().GetDamageServerRpc(damage);
+            playerController.GetDamageServerRpc(damage);
         }
     }
 
     public void GetDamage(int damage)
     {
+        if (!IsServer) return;
+
         bossHealth = bossHealth - damage;
 
-        float healthFill = (maxBossHealthBarWidth / maxBossHealth) * bossHealth;
-        bossHealthBarFill.localScale = new Vector3(healthFill, bossHealthBarFill.localScale.y, bossHealthBarFill.localScale.z);
+        bossHealthBarFillValue.Value = (maxBossHealthBarWidth / maxBossHealth) * bossHealth;
+        bossHealthBarFill.localScale = new Vector3(bossHealthBarFillValue.Value, bossHealthBarFill.localScale.y, bossHealthBarFill.localScale.z);
 
-        gameObject.GetComponent<Animator>().SetTrigger("Hurt");
+        gameObject.GetComponent<NetworkAnimator>().SetTrigger("Hurt");
 
         if (bossHealth <= 0)
         {
-            gameObject.GetComponent<Animator>().SetTrigger("Die");
+            gameObject.GetComponent<NetworkAnimator>().SetTrigger("Die");
 
             StartCoroutine(Wait());
         }
+    }
+
+    private void DecreaseHealthBar(float previousValue, float newValue)
+    {
+        bossHealthBarFill.localScale = new Vector3(bossHealthBarFillValue.Value, bossHealthBarFill.localScale.y, bossHealthBarFill.localScale.z);
     }
 
     IEnumerator Wait()

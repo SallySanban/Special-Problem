@@ -15,6 +15,8 @@ public class BulletController : NetworkBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!IsServer) return;
+
         if (collision.CompareTag("Boss"))
         {
             BossController boss = collision.GetComponent<BossController>();
@@ -32,7 +34,7 @@ public class BulletController : NetworkBehaviour
         
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void DestroyBulletServerRpc()
     {
         Destroy(gameObject);
