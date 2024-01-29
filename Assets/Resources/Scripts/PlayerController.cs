@@ -58,7 +58,6 @@ public class PlayerController : NetworkBehaviour
         if (Input.GetKey(KeyCode.A))
         {  
             transform.eulerAngles = new Vector3(0, 180, 0);
-            //healthBar.transform.eulerAngles = new Vector3(0, 0, 0);
 
             move.x -= 2f;
 
@@ -67,7 +66,6 @@ public class PlayerController : NetworkBehaviour
         else if(Input.GetKey(KeyCode.D))
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
-            //healthBar.transform.eulerAngles = new Vector3(0, 0, 0);
 
             move.x += 2f;
 
