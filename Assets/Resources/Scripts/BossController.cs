@@ -76,18 +76,21 @@ public class BossController : NetworkBehaviour
     {
         if (!IsServer) return;
 
-        bossHealth = bossHealth - damage;
-
-        bossHealthBarFillValue.Value = (maxBossHealthBarWidth / maxBossHealth) * bossHealth;
-        bossHealthBarFill.localScale = new Vector3(bossHealthBarFillValue.Value, bossHealthBarFill.localScale.y, bossHealthBarFill.localScale.z);
-
-        gameObject.GetComponent<NetworkAnimator>().SetTrigger("Hurt");
-
-        if (bossHealth <= 0)
+        if(bossHealth > 0)
         {
-            gameObject.GetComponent<NetworkAnimator>().SetTrigger("Die");
+            bossHealth = bossHealth - damage;
 
-            StartCoroutine(Wait());
+            bossHealthBarFillValue.Value = (maxBossHealthBarWidth / maxBossHealth) * bossHealth;
+            bossHealthBarFill.localScale = new Vector3(bossHealthBarFillValue.Value, bossHealthBarFill.localScale.y, bossHealthBarFill.localScale.z);
+
+            gameObject.GetComponent<NetworkAnimator>().SetTrigger("Hurt");
+
+            if (bossHealth <= 0)
+            {
+                gameObject.GetComponent<NetworkAnimator>().SetTrigger("Die");
+
+                StartCoroutine(Wait());
+            }
         }
     }
 

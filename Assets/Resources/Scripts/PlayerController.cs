@@ -3,6 +3,8 @@ using UnityEngine;
 using Unity.Netcode;
 using TMPro;
 using Unity.Netcode.Components;
+using Unity.Collections;
+using System;
 
 public class PlayerController : NetworkBehaviour
 {
@@ -20,21 +22,14 @@ public class PlayerController : NetworkBehaviour
         Die
     }
 
-    private NetworkVariable<PlayerState> state = new NetworkVariable<PlayerState>();
-
     private int maxPlayerHealth = 100;
     private NetworkVariable<int> playerHealth = new(100);
-    private float maxHealthBarWidth;
+    private float maxHealthBarWidth;    
 
     private NetworkVariable<float> playerHealthBarFillValue = new(0);
 
-    //private NetworkVariable<string> playerName = new NetworkVariable<string>();
-
     private void Start()
     {
-        //playerName.Value = Player.playerName;
-
-        //nameText.text = playerName.Value;
         healthBarFill = healthBar.transform.GetChild(1).transform;
         maxHealthBarWidth = healthBarFill.localScale.x;
     }
@@ -46,6 +41,7 @@ public class PlayerController : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+        Debug.Log(NetworkManager.Singleton.LocalClientId);
         if (!IsServer) playerHealthBarFillValue.OnValueChanged += DecreaseHealthBar;
     }
 
@@ -111,17 +107,20 @@ public class PlayerController : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void GetDamageServerRpc(int damage)
     {
-        playerHealth.Value = playerHealth.Value - damage;
-        Debug.Log("PLAYER HEALTH: " + playerHealth.Value);
-
-        playerHealthBarFillValue.Value = (maxHealthBarWidth / maxPlayerHealth) * playerHealth.Value;
-        healthBarFill.localScale = new Vector3(playerHealthBarFillValue.Value, healthBarFill.localScale.y, healthBarFill.localScale.z);
-
-        AnimatePlayerServerRpc("Hurt");
-
-        if (playerHealth.Value <= 0)
+        if(playerHealth.Value > 0)
         {
-            AnimatePlayerServerRpc("Die");
+            playerHealth.Value = playerHealth.Value - damage;
+            Debug.Log("PLAYER HEALTH: " + playerHealth.Value);
+
+            playerHealthBarFillValue.Value = (maxHealthBarWidth / maxPlayerHealth) * playerHealth.Value;
+            healthBarFill.localScale = new Vector3(playerHealthBarFillValue.Value, healthBarFill.localScale.y, healthBarFill.localScale.z);
+
+            AnimatePlayerServerRpc("Hurt");
+
+            if (playerHealth.Value <= 0)
+            {
+                AnimatePlayerServerRpc("Die");
+            }
         }
     }
 
