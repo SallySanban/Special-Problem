@@ -25,7 +25,7 @@ public class PlayerController : NetworkBehaviour
     private int maxPlayerHealth = 100;
     private NetworkVariable<int> playerHealth = new(100);
     private float maxHealthBarWidth;    
-
+    
     private NetworkVariable<float> playerHealthBarFillValue = new(0);
 
     private void Start()
