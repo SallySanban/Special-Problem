@@ -19,7 +19,7 @@ public class ActionManager : MonoBehaviour
     {
         instance = this;
 
-        actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Main"));
+        actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Trial"));
 
         doAction(mainActionId); //start with the 1st id
     }

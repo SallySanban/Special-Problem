@@ -41,7 +41,6 @@ public class PlayerController : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        Debug.Log(NetworkManager.Singleton.LocalClientId);
         if (!IsServer) playerHealthBarFillValue.OnValueChanged += DecreaseHealthBar;
     }
 

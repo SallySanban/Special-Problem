@@ -1,0 +1,20 @@
+{
+	"actions": [
+		{
+			"id": "1",
+			"action": "Talk",
+			"name": "TREE",
+			"value": "State your name and your purpose."
+		},
+		{
+			"id": "2",
+			"action": "Ask Name"
+		},
+		{
+			"id": "3",
+			"action": "Change Scene",
+			"value": "Combat"
+		}
+	]
+}
+ 
