@@ -17,6 +17,8 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] GameObject playerNameTemplate;
     [SerializeField] Transform playerNameParent;
 
+    private List<GameObject> playerList = new List<GameObject>();
+
     private UnityTransport transport;
 
     private Lobby connectedLobby;
@@ -26,9 +28,10 @@ public class LobbyManager : MonoBehaviour
         transport = FindObjectOfType<UnityTransport>();
     }
 
+    
+
     private void Start()
     {
-        //findMatchButton.onClick.AddListener(CreateOrJoinLobby);
         CreateOrJoinLobby();
     }
 
@@ -50,7 +53,6 @@ public class LobbyManager : MonoBehaviour
 
         AuthenticationService.Instance.SignedIn += () =>
         {
-            //PlayerController.Instance.nameText.text = Player.playerName;
             Debug.Log("Signed in Player Id: " + AuthenticationService.Instance.PlayerId + " Player Name: " + Player.playerName);
         };
 
@@ -88,6 +90,18 @@ public class LobbyManager : MonoBehaviour
 
             transport.SetHostRelayData(lobbyAllocation.RelayServer.IpV4, (ushort) lobbyAllocation.RelayServer.Port, lobbyAllocation.AllocationIdBytes, lobbyAllocation.Key, lobbyAllocation.ConnectionData);
 
+            LobbyEventCallbacks callbacks = new LobbyEventCallbacks();
+            callbacks.LobbyChanged += OnLobbyChanged;
+
+            try
+            {
+                ILobbyEvents lobbyEvents = await Lobbies.Instance.SubscribeToLobbyEventsAsync(lobby.Id, callbacks);
+            }
+            catch (LobbyServiceException e)
+            {
+                Debug.Log(e);
+            }
+
             Debug.Log("Created Lobby Name: " + lobby.Name + " Max Players: " + lobby.MaxPlayers);
 
             //NetworkManager.Singleton.StartHost();
@@ -117,6 +131,8 @@ public class LobbyManager : MonoBehaviour
 
             Lobby joinedLobby = await LobbyService.Instance.QuickJoinLobbyAsync(quickJoinLobbyOptions);
 
+            connectedLobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
+
             JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinedLobby.Data["JoinCodeKey"].Value);
 
             SetTransformAsClient(joinAllocation);
@@ -138,14 +154,31 @@ public class LobbyManager : MonoBehaviour
         transport.SetClientRelayData(allocation.RelayServer.IpV4, (ushort) allocation.RelayServer.Port, allocation.AllocationIdBytes, allocation.Key, allocation.ConnectionData, allocation.HostConnectionData);
     }
 
+    [ContextMenu("List Players")]
+    private void ListPlayers()
+    {
+        Debug.Log("Players in Lobby");
+        foreach (Unity.Services.Lobbies.Models.Player player in connectedLobby.Players)
+        {
+            Debug.Log(player.Data["PlayerName"].Value);
+        }
+    }
+
     private void ShowPlayers(Lobby lobby)
     {
+        foreach(GameObject player in playerList)
+        {
+            Destroy(player);
+        }
+
         foreach(Unity.Services.Lobbies.Models.Player player in lobby.Players)
         {
             GameObject playerNamePlate = Instantiate(playerNameTemplate, playerNameParent);
 
             playerNamePlate.GetComponentInChildren<TMP_Text>().text = player.Data["PlayerName"].Value;
             playerNamePlate.SetActive(true);
+
+            playerList.Add(playerNamePlate);
         }
     }
 
@@ -169,6 +202,15 @@ public class LobbyManager : MonoBehaviour
         {
             Lobbies.Instance.SendHeartbeatPingAsync(lobbyId);
             yield return delay;
+        }
+    }
+
+    private void OnLobbyChanged(ILobbyChanges changes)
+    {
+        if (!changes.LobbyDeleted)
+        {
+            changes.ApplyToLobby(connectedLobby);
+            ShowPlayers(connectedLobby);
         }
     }
 }
