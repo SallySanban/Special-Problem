@@ -8,7 +8,8 @@ using Unity.Services.Lobbies.Models;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine.UI;
-using Unity.Netcode;
+using System.Text.RegularExpressions;
+using UnityEngine.Windows;
 
 public class LobbyManager : MonoBehaviour
 {
@@ -51,7 +52,15 @@ public class LobbyManager : MonoBehaviour
     private async Task Authenticate()
     {
         InitializationOptions initializationOptions = new InitializationOptions();
-        initializationOptions.SetProfile(Player.playerName);
+
+        string filteredName = Regex.Replace(Player.playerName, "[^a-zA-Z0-9]", "");
+
+        if (filteredName.Length > 30)
+        {
+            filteredName = filteredName.Substring(0, 30);
+        }
+
+        initializationOptions.SetProfile(filteredName);
 
         await UnityServices.InitializeAsync(initializationOptions);
 
