@@ -11,8 +11,8 @@ public class BossController : NetworkBehaviour
     private GameObject bossHealthBar;
     private Transform bossHealthBarFill;
 
-    private int maxBossHealth = 100;
-    //private int maxBossHealth = (Player.choicesIncorrect <= 0) ? 100 : 100 * Player.choicesIncorrect;
+    //private int maxBossHealth = 100;
+    private int maxBossHealth = (Player.choicesIncorrect <= 0) ? 100 : 100 * Player.choicesIncorrect;
     private float maxBossHealthBarWidth;
 
     private int bossHealth;
