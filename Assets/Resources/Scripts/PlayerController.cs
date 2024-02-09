@@ -14,13 +14,6 @@ public class PlayerController : NetworkBehaviour
     [SerializeField] public TextMeshProUGUI nameText;
 
     Transform healthBarFill;
-    private enum PlayerState
-    {
-        Idle,
-        Walk,
-        Hurt,
-        Die
-    }
 
     private int maxPlayerHealth = 100;
     private NetworkVariable<int> playerHealth = new(100);
