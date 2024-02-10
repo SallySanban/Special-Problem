@@ -9,5 +9,6 @@ public class PlayerIdle : StateMachineBehaviour
     {
         animator.ResetTrigger("Hurt");
         animator.ResetTrigger("Die");
+        animator.ResetTrigger("Revive");
     }
 }

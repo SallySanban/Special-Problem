@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
-using UnityEngine.Windows;
 
 public class LobbyManager : MonoBehaviour
 {
@@ -52,6 +51,11 @@ public class LobbyManager : MonoBehaviour
     private async Task Authenticate()
     {
         InitializationOptions initializationOptions = new InitializationOptions();
+
+        if(Player.playerName == "")
+        {
+            Player.playerName = "Player";
+        }
 
         string filteredName = Regex.Replace(Player.playerName, "[^a-zA-Z0-9]", "");
 

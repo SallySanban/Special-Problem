@@ -3,8 +3,7 @@ using UnityEngine;
 using Unity.Netcode;
 using TMPro;
 using Unity.Netcode.Components;
-using Unity.Collections;
-using System;
+using UnityEngine.UI;
 
 public class PlayerController : NetworkBehaviour
 {
@@ -20,6 +19,8 @@ public class PlayerController : NetworkBehaviour
     private float maxHealthBarWidth;    
     
     private NetworkVariable<float> playerHealthBarFillValue = new(0);
+
+    public NetworkVariable<bool> playerActive = new(true);
 
     private void Start()
     {
@@ -40,6 +41,8 @@ public class PlayerController : NetworkBehaviour
     private void ControlPlayer()
     {
         if (!IsOwner) return;
+
+        if (playerActive.Value == false) return;
 
         Vector3 move = new Vector3(0, 0, 0);
 
@@ -91,8 +94,12 @@ public class PlayerController : NetworkBehaviour
         else if (animation == "Die")
         {
             gameObject.GetComponent<NetworkAnimator>().SetTrigger("Die");
-            
-            StartCoroutine(Wait());
+
+            RevivePlayerClientRpc();
+        }
+        else if (animation == "Revive")
+        {
+            gameObject.GetComponent<NetworkAnimator>().SetTrigger("Revive");
         }
     }
 
@@ -128,16 +135,58 @@ public class PlayerController : NetworkBehaviour
         bullet.GetComponent<NetworkObject>().Spawn();
     }
 
-    IEnumerator Wait()
+    [ClientRpc]
+    private void RevivePlayerClientRpc()
     {
-        yield return new WaitForSeconds(1f);
-
-        DestroyPlayerServerRpc();
+        StartCoroutine(Revive());
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void DestroyPlayerServerRpc()
+    private void UpdatePlayerActiveServerRpc(bool activeStatus)
     {
-        Destroy(gameObject);
+        playerActive.Value = activeStatus;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void MaxPlayerHealthServerRpc()
+    {
+        playerHealth.Value = maxPlayerHealth;
+    }
+
+    IEnumerator Revive()
+    {
+        yield return new WaitForSeconds(1f);
+
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+
+        foreach(Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+
+        UpdatePlayerActiveServerRpc(false);
+
+        AnimatePlayerServerRpc("Revive");
+
+        if (IsOwner)
+        {
+            StartCoroutine(CombatManager.Instance.ShowDeathScreen());
+        }
+
+        yield return new WaitForSeconds(5f);
+
+        transform.position = new Vector3(0, 0, 0);
+
+        MaxPlayerHealthServerRpc();
+        healthBarFill.localScale = new Vector3(maxHealthBarWidth, healthBarFill.localScale.y, healthBarFill.localScale.z);
+
+        UpdatePlayerActiveServerRpc(true);
+
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
+        }
     }
 }

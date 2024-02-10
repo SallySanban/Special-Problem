@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BossRun : StateMachineBehaviour
@@ -7,7 +8,7 @@ public class BossRun : StateMachineBehaviour
     private float speed = 2.5f;
     private float attackRange = 5f;
 
-    GameObject[] players;
+    List<GameObject> players;
     Transform player;
     Rigidbody2D boss;
     BossController bossController;
@@ -15,11 +16,18 @@ public class BossRun : StateMachineBehaviour
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        players = CombatManager.players;
-
-        if(players.Length != 0)
+        if(CombatManager.Instance.addingPlayers == false)
         {
-            player = players[Random.Range(0, players.Length)].transform;
+            players = CombatManager.Instance.activePlayers;
+
+            if (players.Count != 0)
+            {
+                player = players[Random.Range(0, players.Count)].transform;
+            }
+            else
+            {
+                player = null;
+            }
         }
 
         boss = animator.GetComponent<Rigidbody2D>();
