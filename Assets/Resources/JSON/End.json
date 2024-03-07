@@ -1,0 +1,16 @@
+{
+	"actions": [
+		{
+			"id": "1",
+			"action": "Change Background",
+			"value": "Street"
+		},
+		{
+			"id": "2",
+			"action": "Talk",
+			"name": "TREE",
+			"value": "YOU ARE IN ENDING"
+		}
+	]
+}
+ 

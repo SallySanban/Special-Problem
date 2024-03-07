@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
-using UnityEngine.Playables;
 using Unity.Netcode.Components;
-using System;
+using UnityEngine.SceneManagement;
 
 public class BossController : NetworkBehaviour
 {
@@ -101,6 +99,8 @@ public class BossController : NetworkBehaviour
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(1f);
+
+        CombatManager.Instance.EndScene();
 
         Destroy(gameObject);
     }

@@ -3,6 +3,8 @@ using Unity.Netcode;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Netcode.Transports.UTP;
+using UnityEngine.SceneManagement;
 
 public class CombatManager : MonoBehaviour
 {
@@ -55,6 +57,18 @@ public class CombatManager : MonoBehaviour
 
         boss = Instantiate(bossPrefab, bossPosition, Quaternion.Euler(0f, 180f, 0f));
         boss.GetComponent<NetworkObject>().Spawn();
+    }
+
+    public void EndScene()
+    {
+        if (!NetworkManager.Singleton.IsServer) return;
+
+        foreach (GameObject p in players)
+        {
+            Destroy(p);
+        }
+
+        NetworkManager.Singleton.SceneManager.LoadScene("VisualNovel", LoadSceneMode.Single);
     }
 
     public IEnumerator ShowDeathScreen()

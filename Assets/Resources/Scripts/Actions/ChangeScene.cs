@@ -14,6 +14,11 @@ public class ChangeScene : MonoBehaviour
 
     public void ChangeSceneMethod(string sceneName)
     {
+        if(sceneName == "Combat")
+        {
+            EndScene.instance.endScene = true;
+        }
+
         SceneManager.LoadScene(sceneName);
     }
 }

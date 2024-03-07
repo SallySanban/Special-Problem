@@ -44,6 +44,8 @@ public class PlayerController : NetworkBehaviour
 
         if (playerActive.Value == false) return;
 
+        if (GameObject.FindGameObjectWithTag("Boss") == null) return;
+
         Vector3 move = new Vector3(0, 0, 0);
 
         if (Input.GetKey(KeyCode.A))
