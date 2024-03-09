@@ -25,7 +25,7 @@ public class ActionManager : MonoBehaviour
         }
         else
         {
-            actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Trial"));
+            actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Main"));
         }
         
 

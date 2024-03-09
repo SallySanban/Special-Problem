@@ -68,6 +68,11 @@ public class TextTypewriter
 
     IEnumerator Building()
     {
+        while (Fade.currentlyFading)
+        {
+            yield return null;
+        }
+
         Prepare();
 
         switch (textType)

@@ -78,7 +78,6 @@ public class Talk : MonoBehaviour
 
     public void TalkMethod(string dialogue, string name)
     {
-        ShowHideTextbox(true);
 
         if (!(name == ""))
         {
@@ -104,6 +103,7 @@ public class Talk : MonoBehaviour
             line = dialogue;
         }
 
+        ShowHideTextbox(true);
         textTypewriter.Build(line);
     }
 }
