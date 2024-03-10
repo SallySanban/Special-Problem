@@ -10,14 +10,19 @@ public class ActionManager : MonoBehaviour
 
     Action[] actionList;
 
-    public string currentActionId = "1";
-    public string mainActionId = "1";
-    public int choiceActionId = 1;
-    public bool insideChoice = false;
+    public string currentActionId;
+    public string mainActionId;
+    public int choiceActionId;
+    public bool insideChoice;
 
     void Start()
     {
         instance = this;
+
+        currentActionId = "1";
+        mainActionId = "1";
+        choiceActionId = 1;
+        insideChoice = false;
 
         if (EndScene.instance.endScene)
         {
@@ -27,7 +32,6 @@ public class ActionManager : MonoBehaviour
         {
             actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Main"));
         }
-        
 
         doAction(mainActionId); //start with the 1st id
     }

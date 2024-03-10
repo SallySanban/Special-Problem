@@ -52,11 +52,6 @@ public class LobbyManager : MonoBehaviour
     {
         InitializationOptions initializationOptions = new InitializationOptions();
 
-        if(Player.playerName == "")
-        {
-            Player.playerName = "Player";
-        }
-
         string filteredName = Regex.Replace(Player.playerName, "[^a-zA-Z0-9]", "");
 
         if (filteredName.Length > 30)
