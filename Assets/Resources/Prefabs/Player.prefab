@@ -152,8 +152,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 80309b5b17456584480d0da94c0be184, type: 2}
-  m_sharedMaterial: {fileID: 9057368294964704177, guid: 80309b5b17456584480d0da94c0be184, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7799fb97e6d83a040bd5fdb52fe1c60d, type: 2}
+  m_sharedMaterial: {fileID: -8340169245329004, guid: 7799fb97e6d83a040bd5fdb52fe1c60d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -591,6 +591,8 @@ MonoBehaviour:
   healthBar: {fileID: 8741579405042930207}
   bulletPrefab: {fileID: 4338754427167376062, guid: c226154bda311e547aa381f3eb74801a, type: 3}
   nameText: {fileID: 142385746217449433}
+  playerActive:
+    m_InternalValue: 1
 --- !u!114 &199854915222384865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,6 +705,13 @@ MonoBehaviour:
     TransitionDuration: 0
     TriggerNameHash: 20298039
     TransitionIndex: 1
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: 860486596
+    DestinationState: 1485882831
+    TransitionDuration: 0.25
+    TriggerNameHash: -323374038
+    TransitionIndex: 0
   m_Animator: {fileID: 3739062222113413233}
 --- !u!1 &6460243929785581197
 GameObject:
@@ -723,7 +732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7190758923026954707
 RectTransform:
   m_ObjectHideFlags: 0
