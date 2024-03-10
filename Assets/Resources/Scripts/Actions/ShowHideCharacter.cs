@@ -9,8 +9,6 @@ public class ShowHideCharacter : MonoBehaviour
 
     [SerializeField] Image character;
 
-    bool characterOnScreen;
-
     private void Awake()
     {
         instance = this;
