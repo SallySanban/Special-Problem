@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class Talk : MonoBehaviour
@@ -25,8 +26,8 @@ public class Talk : MonoBehaviour
         textBoxImage = textBox.GetComponent<Image>();
         nameBoxImage = nameBox.GetComponent<Image>();
 
-        ShowHideTextbox(false);
-        ShowHideNamebox(false);
+        textBox.SetActive(false);
+        nameBox.SetActive(false);
 
         textBoxOnScreen = false;
         nameBoxOnScreen = false;
@@ -49,7 +50,7 @@ public class Talk : MonoBehaviour
         }
         else
         {
-            textBox.SetActive(false);
+            StartCoroutine(Fade.FadeMethod(textBoxImage, false));
 
             textBox.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "";
 
@@ -72,7 +73,7 @@ public class Talk : MonoBehaviour
         }
         else
         {
-            nameBox.SetActive(false);
+            StartCoroutine(Fade.FadeMethod(nameBox.GetComponent<Image>(), false));
 
             nameBoxOnScreen = false;
         }

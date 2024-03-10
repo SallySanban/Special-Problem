@@ -30,7 +30,7 @@ public class ActionManager : MonoBehaviour
         }
         else
         {
-            actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Main"));
+            actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Trial"));
         }
 
         doAction(mainActionId); //start with the 1st id
@@ -66,7 +66,6 @@ public class ActionManager : MonoBehaviour
                 break;
             case "Change Background":
                 ChangeBackground.instance.ChangeBackgroundMethod(actionToPlay.value);
-                doAction(getNextAction(currentActionId, choiceActionId));
                 break;
             case "Ask Name":
                 AskName.instance.AskNameMethod();
@@ -76,11 +75,9 @@ public class ActionManager : MonoBehaviour
                 break;
             case "Show Character":
                 ShowHideCharacter.instance.ShowHideCharacterMethod(actionToPlay.value, true);
-                doAction(getNextAction(currentActionId, choiceActionId));
                 break;
             case "Hide Character":
                 ShowHideCharacter.instance.ShowHideCharacterMethod(actionToPlay.value, false);
-                doAction(getNextAction(currentActionId, choiceActionId));
                 break;
             case "Character Shake":
                 CharacterShake.instance.CharacterShakeMethod();
@@ -93,11 +90,38 @@ public class ActionManager : MonoBehaviour
                 break;
             case "Show Heart":
                 ShowHeart.instance.ShowHeartMethod();
-                doAction(getNextAction(currentActionId, choiceActionId));
                 break;
             case "Change Scene":
                 ChangeScene.instance.ChangeSceneMethod(actionToPlay.value);
                 break;
+            case "Play Sound Loop":
+                AudioManager.instance.playSoundLoop(actionToPlay.value);
+                break;
+            case "Play Sound Effect":
+                AudioManager.instance.playSoundEffect(actionToPlay.value);
+                break;
+            case "Stop Sound":
+                AudioManager.instance.stopSoundLoop();
+                break;
+            case "Hide Textbox":
+                Talk.instance.ShowHideTextbox(false);
+                Talk.instance.ShowHideNamebox(false);
+                break;
+            case "Change Character":
+                break;
+            case "Show Prop":
+                ShowHideProp.instance.ShowHidePropMethod(actionToPlay.value, true);
+                break;
+            case "Hide Prop":
+                ShowHideProp.instance.ShowHidePropMethod(actionToPlay.value, false);
+                break;
+            case "Flash Screen":
+                break;
+        }
+
+        if(actionToPlay.playNextAction == true)
+        {
+            doAction(getNextAction(currentActionId, choiceActionId));
         }
     }
 

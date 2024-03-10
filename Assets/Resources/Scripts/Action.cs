@@ -10,4 +10,5 @@ public class Action
     public string name = "";
     public string value = "";
     public List<string> choices;
+    public bool playNextAction;
 }

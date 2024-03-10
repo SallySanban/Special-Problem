@@ -45,8 +45,5 @@ public class ShowText : MonoBehaviour
         text.text = textToShow;
 
         ShowHideText(true);
-
-        Talk.instance.ShowHideTextbox(false);
-        Talk.instance.ShowHideNamebox(false);
     }
 }

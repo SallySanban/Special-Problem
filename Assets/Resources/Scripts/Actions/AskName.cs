@@ -42,7 +42,5 @@ public class AskName : MonoBehaviour
     public void AskNameMethod()
     {
         ShowHideInputField(true);
-        Talk.instance.ShowHideTextbox(false);
-        Talk.instance.ShowHideNamebox(false);
     }
 }

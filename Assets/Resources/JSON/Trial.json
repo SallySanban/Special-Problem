@@ -1,0 +1,45 @@
+{
+	"actions": [
+		{
+			"id": "1",
+			"action": "Show Text",
+			"value": "Press space or enter to continue"
+		},
+		{
+			"id": "2",
+			"action": "Talk",
+			"name": "ANCIENT SPIRIT",
+			"value": "Who are you and why have you called for me?"
+		},
+		{
+			"id": "3",
+			"action": "Ask Name"
+		},
+		{
+			"id": "4",
+			"action": "Flash Screen"
+		},
+		{
+			"id": "5",
+			"action": "Show Prop",
+			"value": "Wet Paper"
+		},
+		{
+			"id": "6",
+			"action": "Hide Prop",
+			"value": "Wet Paper"
+		},
+		{
+			"id": "7",
+			"action": "Play Sound Loop",
+			"value": "Combat",
+			"playNextAction": true
+		},
+		{
+			"id": "8",
+			"action": "Change Scene",
+			"value": "Combat"
+		}
+	]
+}
+ 

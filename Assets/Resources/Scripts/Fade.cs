@@ -21,7 +21,7 @@ public class Fade : MonoBehaviour
                 yield return null;
             }
 
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.1f);
             image.gameObject.SetActive(false);
 
             currentlyFading = false;
