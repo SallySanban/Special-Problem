@@ -51,6 +51,8 @@ public class Talk : MonoBehaviour
         {
             textBox.SetActive(false);
 
+            textBox.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "";
+
             textBoxOnScreen = false;
         }
     }
@@ -79,7 +81,7 @@ public class Talk : MonoBehaviour
     public void TalkMethod(string dialogue, string name)
     {
 
-        if (!(name == ""))
+        if (name != "")
         {
             ShowHideNamebox(true);
 
@@ -87,7 +89,7 @@ public class Talk : MonoBehaviour
         }
         else
         {
-            nameBox.SetActive(false);
+            ShowHideNamebox(false);
         }
 
         textTypewriter.textType = TextTypewriter.TextType.typewriter;
