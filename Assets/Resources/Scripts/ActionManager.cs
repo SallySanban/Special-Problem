@@ -11,8 +11,8 @@ public class ActionManager : MonoBehaviour
     Action[] actionList;
 
     public string currentActionId = "1";
-    string mainActionId = "1";
-    int choiceActionId = 2;
+    public string mainActionId = "1";
+    public int choiceActionId = 1;
     public bool insideChoice = false;
 
     void Start()
@@ -62,6 +62,7 @@ public class ActionManager : MonoBehaviour
                 break;
             case "Change Background":
                 ChangeBackground.instance.ChangeBackgroundMethod(actionToPlay.value);
+                doAction(getNextAction(currentActionId, choiceActionId));
                 break;
             case "Ask Name":
                 AskName.instance.AskNameMethod();
@@ -96,7 +97,7 @@ public class ActionManager : MonoBehaviour
         }
     }
 
-    private Action getActionFromId(string choiceId)
+    public Action getActionFromId(string choiceId)
     {
         foreach (Action action in actionList)
         {
@@ -113,8 +114,6 @@ public class ActionManager : MonoBehaviour
     {
         if(insideChoice)
         {
-            string currentChoice = currentId.Substring(0, (currentId.Length - 1)) + currentChoiceId.ToString();
-
             //check where the choice ends
             string nextActionId = currentId.Substring(0, (currentId.Length - 1)) + (currentChoiceId + 1).ToString();
             Action nextAction = getActionFromId(nextActionId);
@@ -123,23 +122,22 @@ public class ActionManager : MonoBehaviour
             {
                 insideChoice = false;
 
-                choiceActionId = 2;
+                choiceActionId = 1;
             }
             else
             {
                 choiceActionId++;
+
+                currentActionId = nextActionId;
             }
-
-            currentActionId = currentChoice;
-
-            return currentActionId;
         }
-        else
+        
+        if(!insideChoice)
         {
             mainActionId = (int.Parse(mainActionId) + 1).ToString();
             currentActionId = mainActionId;
-
-            return mainActionId;
         }
+
+        return currentActionId;
     }
 }

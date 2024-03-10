@@ -14,7 +14,10 @@ public class RepeatChoice : MonoBehaviour
     public void RepeatChoiceMethod(string idToRepeat)
     {
         string currentAction = idToRepeat;
-        ActionManager.instance.doAction(currentAction);
+
         ActionManager.instance.currentActionId = currentAction;
+        ActionManager.instance.choiceActionId = 1;
+
+        ActionManager.instance.doAction(currentAction);
     }
 }

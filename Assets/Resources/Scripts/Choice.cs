@@ -7,8 +7,7 @@ public class Choice : Button
 {
     int choiceIndex = 0;
     string baseChoiceId;
-
-    public static int clickedChoice = 0;
+    string currentAction;
 
     new void Start()
     {
@@ -29,12 +28,23 @@ public class Choice : Button
     {
         ShowChoice.instance.ShowHideChoice(false);
 
-        ActionManager.instance.insideChoice = true;
-        clickedChoice = choiceIndex;
+        ActionManager.instance.choiceActionId = 1;
 
-        string currentAction = baseChoiceId + "." + choiceIndex.ToString() + " - 1";
-        ActionManager.instance.currentActionId = currentAction;
+        currentAction = baseChoiceId + "." + choiceIndex.ToString() + " - 1";
 
-        ActionManager.instance.doAction(currentAction); //start with first choice id
+        if (ActionManager.instance.getActionFromId(currentAction) != null)
+        {
+            ActionManager.instance.insideChoice = true;
+
+            ActionManager.instance.currentActionId = currentAction;
+        }
+        else
+        {
+            currentAction = (int.Parse(baseChoiceId) + 1).ToString();
+
+            ActionManager.instance.mainActionId = currentAction;
+        }
+
+        ActionManager.instance.doAction(currentAction);
     }
 }

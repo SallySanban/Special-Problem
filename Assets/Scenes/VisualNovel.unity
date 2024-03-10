@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 250278806}
   - component: {fileID: 250278807}
+  - component: {fileID: 250278808}
   m_Layer: 5
   m_Name: 3 - Dialogue
   m_TagString: Untagged
@@ -176,6 +177,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameBox: {fileID: 818886569}
   textBox: {fileID: 371957969}
+--- !u!114 &250278808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250278805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e456d60d12ec3b4bb35e811cea914a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1651122223}
+  camera: {fileID: 519420031}
 --- !u!1 &371957969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,8 +1803,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Choice
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 80309b5b17456584480d0da94c0be184, type: 2}
-  m_sharedMaterial: {fileID: 9057368294964704177, guid: 80309b5b17456584480d0da94c0be184, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7799fb97e6d83a040bd5fdb52fe1c60d, type: 2}
+  m_sharedMaterial: {fileID: -8340169245329004, guid: 7799fb97e6d83a040bd5fdb52fe1c60d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1849,10 +1864,10 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 22.640045, y: 0, z: 30.186829, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1624775876
@@ -1921,7 +1936,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello this is my text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7799fb97e6d83a040bd5fdb52fe1c60d, type: 2}
   m_sharedMaterial: {fileID: -8340169245329004, guid: 7799fb97e6d83a040bd5fdb52fe1c60d, type: 2}
