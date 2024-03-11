@@ -38,7 +38,7 @@ public class ActionManager : MonoBehaviour
 
     private void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !AskName.instance.inputFieldOnScreen && !ShowChoice.instance.choicesOnScreen && !Talk.instance.textTypewriter.isBuilding && !Fade.currentlyFading)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !AskName.instance.inputFieldOnScreen && !ShowChoice.instance.choicesOnScreen && !Talk.instance.textTypewriter.isBuilding && !Fade.currentlyFading && !Flash.instance.currentlyFlashing)
         {
             if (ShowText.instance.textOnScreen)
             {

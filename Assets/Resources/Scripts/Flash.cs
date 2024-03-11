@@ -9,6 +9,8 @@ public class Flash : MonoBehaviour
 
     [SerializeField] Image flashScreen;
 
+    public bool currentlyFlashing = false;
+
     private void Awake()
     {
         instance = this;
@@ -23,6 +25,8 @@ public class Flash : MonoBehaviour
 
         float flashDuration = 0.5f;
         float flashTime = flashDuration / 2;
+        
+        currentlyFlashing = true;
 
         for (float i = 0; i <= flashTime; i += Time.deltaTime)
         {
@@ -43,5 +47,7 @@ public class Flash : MonoBehaviour
         yield return new WaitForSeconds(flashDuration);
 
         flashScreen.gameObject.SetActive(false);
+
+        currentlyFlashing = false;
     }
 }

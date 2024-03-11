@@ -18,18 +18,39 @@ public class ChangeBackground : MonoBehaviour
 
     public void ChangeBackgroundMethod(string filename)
     {
-        background.gameObject.SetActive(true);
-        background.color = new Color(1, 1, 1, 0);
-
-        if (filename == "Blackout")
+        if (filename == "Blackout") //surely there's a background on the scene to be able to blackout (and then deletes background)
         {
             StartCoroutine(Fade.FadeMethod(background, false));
         }
         else
         {
-            background.sprite = Resources.Load<Sprite>("Art/" + filename);
+            if (background.gameObject.activeSelf)   //if the background is on the scene (switching from one bg to another)
+            {
+                StartCoroutine(Fade.FadeMethod(background, false)); //deletes background
 
-            StartCoroutine(Fade.FadeMethod(background, true));
+                StartCoroutine(SwitchBackground(filename));
+            }
+            else //if background is not on scene (going from blackout - where bg doesnt exist - to existing bg)
+            {
+                background.gameObject.SetActive(true);
+                background.color = new Color(1, 1, 1, 0);
+
+                background.sprite = Resources.Load<Sprite>("Art/" + filename);
+
+                StartCoroutine(Fade.FadeMethod(background, true));
+            }
         }
+    }
+
+    IEnumerator SwitchBackground(string filename)
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        background.gameObject.SetActive(true);
+        background.color = new Color(1, 1, 1, 0);
+
+        background.sprite = Resources.Load<Sprite>("Art/" + filename);
+
+        StartCoroutine(Fade.FadeMethod(background, true));
     }
 }

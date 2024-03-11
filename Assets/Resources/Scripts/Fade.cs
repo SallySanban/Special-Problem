@@ -7,7 +7,7 @@ using TMPro;
 public class Fade : MonoBehaviour
 {
     public static bool currentlyFading = false;
-    static float time = 0.03f;
+    static float time = 0.02f;
 
     public static IEnumerator FadeMethod(Image image, bool fadeIn)
     {
