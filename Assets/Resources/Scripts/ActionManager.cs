@@ -120,6 +120,7 @@ public class ActionManager : MonoBehaviour
                 ShowHideProp.instance.ShowHidePropMethod(actionToPlay.value, false);
                 break;
             case "Flash Screen":
+                StartCoroutine(Flash.instance.FlashMethod());
                 break;
         }
 
