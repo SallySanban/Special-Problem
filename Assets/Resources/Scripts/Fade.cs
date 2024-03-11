@@ -7,7 +7,7 @@ using TMPro;
 public class Fade : MonoBehaviour
 {
     public static bool currentlyFading = false;
-    static float time = 0.01f;
+    static float time = 0.03f;
 
     public static IEnumerator FadeMethod(Image image, bool fadeIn)
     {
@@ -21,7 +21,7 @@ public class Fade : MonoBehaviour
                 yield return null;
             }
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.01f);
             image.gameObject.SetActive(false);
 
             currentlyFading = false;
