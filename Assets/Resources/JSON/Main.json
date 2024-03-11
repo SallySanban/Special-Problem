@@ -32,7 +32,7 @@
 		{
 			"id": "6",
 			"action": "Show Prop",
-			"value": "Paper"
+			"value": "Wet Paper"
 		},
 		{
 			"id": "7",
@@ -49,7 +49,7 @@
 		{
 			"id": "9",
 			"action": "Hide Prop",
-			"value": "Paper",
+			"value": "Wet Paper",
 			"playNextAction": true
 		},
 		{
@@ -431,7 +431,8 @@
 		{
 			"id": "53",
 			"action": "Show Character",
-			"value": "Eloise_Surprised",
+			"value": "Eloise",
+			"emotion":  "Eloise_Surprised",
 			"playNextAction": true
 		},
 		{
@@ -442,8 +443,8 @@
 		},
 		{
 			"id": "55",
-			"action": "Change Character",
-			"value": "Eloise_Sad",
+			"action": "Change Emotion",
+			"emotion": "Eloise_Sad",
 			"playNextAction": true
 		},
 		{
@@ -594,8 +595,8 @@
 		},
 		{
 			"id": "67.1 - 3",
-			"action": "Change Character",
-			"value": "Eloise_Happy",
+			"action": "Change Emotion",
+			"emotion": "Eloise_Happy",
 			"playNextAction": true
 		},
 		{
@@ -619,7 +620,8 @@
 		{
 			"id": "67.1 - 7",
 			"action": "Hide Character",
-			"value": "Eloise_Happy",
+			"value": "Eloise",
+			"emotion": "Eloise_Happy",
 			"playNextAction": true
 		},
 		{
@@ -641,7 +643,8 @@
 		{
 			"id": "67.2 - 3",
 			"action": "Hide Character",
-			"value": "Eloise_Sad"
+			"value": "Eloise",
+			"emotion": "Eloise_Sad"
 		},
 		{
 			"id": "67.2 - 4",
@@ -662,7 +665,8 @@
 		{
 			"id": "70",
 			"action": "Show Character",
-			"value": "Eloise_Sad",
+			"value": "Eloise",
+			"emotion":  "Eloise_Sad",
 			"playNextAction": true
 		},
 		{
@@ -830,8 +834,8 @@
 		},
 		{
 			"id": "78.1 - 6.1 - 2.2 - 2.2 - 2.1 - 2",
-			"action": "Change Character",
-			"value": "Eloise_Happy",
+			"action": "Change Emotion",
+			"emotion": "Eloise_Happy",
 			"playNextAction": true
 		},
 		{
@@ -848,8 +852,8 @@
 		},
 		{
 			"id": "78.1 - 6.1 - 2.2 - 2.2 - 2.1 - 5",
-			"action": "Change Character",
-			"value": "Eloise_Sad",
+			"action": "Change Emotion",
+			"emotion": "Eloise_Sad",
 			"playNextAction": true
 		},
 		{
@@ -933,8 +937,8 @@
 		},
 		{
 			"id": "81.1 - 3",
-			"action": "Change Character",
-			"value": "Eloise_Happy",
+			"action": "Change Emotion",
+			"emotion": "Eloise_Happy",
 			"playNextAction": true
 		},
 		{
@@ -946,7 +950,8 @@
 		{
 			"id": "81.1 - 5",
 			"action": "Hide Character",
-			"value": "Eloise_Happy",
+			"value": "Eloise",
+			"emotion": "Eloise_Happy",
 			"playNextAction": true
 		},
 		{
@@ -1052,7 +1057,8 @@
 		{
 			"id": "81.2 - 15",
 			"action": "Hide Character",
-			"value": "Eloise_Sad",
+			"value": "Eloise",
+			"emotion": "Eloise_Sad",
 			"playNextAction": true
 		},
 		{
@@ -1222,7 +1228,8 @@
 		{
 			"id": "108",
 			"action": "Show Character",
-			"value": "Eloise_Sad",
+			"value": "Eloise",
+			"emotion": "Eloise_Sad",
 			"playNextAction": true
 		},
 		{
@@ -1343,7 +1350,8 @@
 		{
 			"id": "123",
 			"action": "Hide Character",
-			"value": "Eloise_Sad",
+			"value": "Eloise",
+			"emotion": "Eloise_Sad",
 			"playNextAction": true
 		},
 		{
@@ -1400,7 +1408,8 @@
 		{
 			"id": "133",
 			"action": "Show Character",
-			"value": "Elder"
+			"value": "Elder",
+			"emotion": "Elder_Angry"
 		},
 		{
 			"id": "134",
@@ -1458,7 +1467,8 @@
 		{
 			"id": "143",
 			"action": "Change Character",
-			"value": "Eloise_Monster"
+			"value": "Monster",
+			"emotion": "Monster_Sad"
 		},
 		{
 			"id": "144",
@@ -1511,6 +1521,7 @@
 			"id": "152",
 			"action": "Change Character",
 			"value": "Elder",
+			"emotion": "Elder_Angry",
 			"playNextAction": true
 		},
 		{

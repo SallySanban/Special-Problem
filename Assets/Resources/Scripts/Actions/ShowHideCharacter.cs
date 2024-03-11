@@ -7,7 +7,8 @@ public class ShowHideCharacter : MonoBehaviour
 {
     public static ShowHideCharacter instance;
 
-    [SerializeField] Image character;
+    [SerializeField] public Image character;
+    [SerializeField] public Image characterEmotion;
 
     private void Awake()
     {
@@ -16,19 +17,25 @@ public class ShowHideCharacter : MonoBehaviour
         character.gameObject.SetActive(false);
     }
 
-    public void ShowHideCharacterMethod(string filename, bool show)
+    public void ShowHideCharacterMethod(string filename, string emotion, bool show)
     {
         character.sprite = Resources.Load<Sprite>("Art/" + filename);
+        characterEmotion.sprite = Resources.Load<Sprite>("Art/" + emotion);
 
         if (show)
         {
             character.gameObject.SetActive(true);
+            characterEmotion.gameObject.SetActive(true);
+
             character.color = new Color(1, 1, 1, 0);
+            characterEmotion.color = new Color(1, 1, 1, 0);
 
             StartCoroutine(Fade.FadeMethod(character, true));
+            StartCoroutine(Fade.FadeMethod(characterEmotion, true));
         }
         else
         {
+            StartCoroutine(Fade.FadeMethod(characterEmotion, false));
             StartCoroutine(Fade.FadeMethod(character, false));
         }
     }

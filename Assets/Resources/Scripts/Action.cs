@@ -11,4 +11,5 @@ public class Action
     public string value = "";
     public List<string> choices;
     public bool playNextAction;
+    public string emotion;
 }

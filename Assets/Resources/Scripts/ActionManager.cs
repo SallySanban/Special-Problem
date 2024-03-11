@@ -74,10 +74,10 @@ public class ActionManager : MonoBehaviour
                 ShowText.instance.ShowTextMethod(actionToPlay.value);
                 break;
             case "Show Character":
-                ShowHideCharacter.instance.ShowHideCharacterMethod(actionToPlay.value, true);
+                ShowHideCharacter.instance.ShowHideCharacterMethod(actionToPlay.value, actionToPlay.emotion, true);
                 break;
             case "Hide Character":
-                ShowHideCharacter.instance.ShowHideCharacterMethod(actionToPlay.value, false);
+                ShowHideCharacter.instance.ShowHideCharacterMethod(actionToPlay.value, actionToPlay.emotion, false);
                 break;
             case "Character Shake":
                 CharacterShake.instance.CharacterShakeMethod();
@@ -108,6 +108,10 @@ public class ActionManager : MonoBehaviour
                 Talk.instance.ShowHideNamebox(false);
                 break;
             case "Change Character":
+                ChangeCharacter.instance.ChangeCharacterMethod(actionToPlay.value, actionToPlay.emotion);
+                break;
+            case "Change Emotion":
+                ChangeCharacter.instance.ChangeEmotion(actionToPlay.emotion);
                 break;
             case "Show Prop":
                 ShowHideProp.instance.ShowHidePropMethod(actionToPlay.value, true);

@@ -21,13 +21,20 @@
 		},
 		{
 			"id": "5",
-			"action": "Show Prop",
-			"value": "Wet Paper"
+			"action": "Show Character",
+			"value": "Eloise",
+			"emotion": "Eloise_Happy"
 		},
 		{
 			"id": "6",
-			"action": "Hide Prop",
-			"value": "Wet Paper"
+			"action": "Change Emotion",
+			"emotion": "Eloise_Sad"
+		},
+		{
+			"id": "7",
+			"action": "Change Character",
+			"value": "Elder",
+			"emotion": "Elder_Angry"
 		},
 		{
 			"id": "7",
