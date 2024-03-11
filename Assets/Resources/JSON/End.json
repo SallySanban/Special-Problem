@@ -31,7 +31,8 @@
 		{
 			"id": "6",
 			"action": "Show Character",
-			"value": "Eloise_Monster"
+			"value": "Monster",
+			"emotion": "Monster_Sad"
 		},
 		{
 			"id": "7",
@@ -52,96 +53,106 @@
 		},
 		{
 			"id": "10",
-			"action": "Change Background",
-			"value": "MC and Eloise"
+			"action": "Hide Character",
+			"value": "Monster",
+			"emotion": "Monster_Sad",
+			"playNextAction": true
 		},
 		{
 			"id": "11",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "I'm sorry. I understand now. You became a monster... because we made you feel like one. But I promise you... you're not a monster. You're not a curse. You're the kindest, most patient person I know."
+			"action": "Change Background",
+			"value": "MC and Eloise"
 		},
 		{
 			"id": "12",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "And you're not alone."
+			"value": "I'm sorry. I understand now. You became a monster... because we made you feel like one. But I promise you... you're not a monster. You're not a curse. You're the kindest, most patient person I know."
 		},
 		{
 			"id": "13",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "And you're not alone."
+		},
+		{
+			"id": "14",
 			"action": "Change Background",
 			"value": "Blackout",
 			"playNextAction": true
 		},
 		{
-			"id": "14",
+			"id": "15",
 			"action": "Hide Textbox"
 		},
 		{
-			"id": "15",
+			"id": "16",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "You're finally awake."
 		},
 		{
-			"id": "16",
+			"id": "17",
 			"action": "Change Background",
 			"value": "Street",
 			"playNextAction": true
 		},
 		{
-			"id": "17",
+			"id": "18",
 			"action": "Show Character",
-			"value": "Eloise_Surprised"
+			"value": "Eloise",
+			"emotion": "Eloise_Surprised"
 		},
 		{
-			"id": "18",
+			"id": "19",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "[Name]? What happened?"
 		},
 		{
-			"id": "19",
+			"id": "20",
 			"action": "Talk",
 			"name": "",
 			"value": "Eloise! You're awake!"
 		},
 		{
-			"id": "20",
+			"id": "21",
 			"action": "Talk",
 			"name": "",
 			"value": "Hey, guys! Eloise is back!"
 		},
 		{
-			"id": "21",
+			"id": "22",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "I talked to the villagers. And... the elders. I helped them realize that none of this is your fault... and that they should <color=#205e2d><b>try to understand you first, before judging you.</b></color>"
 		},
 		{
-			"id": "22",
+			"id": "23",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Don't worry. We'll do better, Eloise. From now on."
 		},
 		{
-			"id": "23",
+			"id": "24",
 			"action": "Change Character",
-			"value": "Eloise_ReallyHappy"
+			"value": "Eloise",
+			"emotion": "Eloise_ReallyHappy"
 		},
 		{
-			"id": "24",
+			"id": "25",
 			"action": "Change Background",
 			"value": "Blackout"
 		},
 		{
-			"id": "25",
+			"id": "26",
 			"action": "Hide Character",
-			"value": "Eloise_ReallyHappy",
+			"value": "Eloise",
+			"emotion": "Eloise_ReallyHappy",
 			"playNextAction": true
 		},
 		{
-			"id": "25",
+			"id": "27",
 			"action": "Show Text",
 			"value": "THE END"
 		}

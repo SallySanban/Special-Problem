@@ -635,7 +635,8 @@
 		},
 		{
 			"id": "69.1 - 8",
-			"action": "Hide Textbox"
+			"action": "Hide Textbox",
+			"playNextAction": true
 		},
 		{
 			"id": "69.2 - 1",
@@ -664,8 +665,7 @@
 		{
 			"id": "70",
 			"action": "Change Background",
-			"value": "Street",
-			"playNextAction": true
+			"value": "Street"
 		},
 		{
 			"id": "71",
@@ -895,7 +895,7 @@
 		{
 			"id": "80.1 - 6.2 - 3",
 			"action": "Repeat Choice",
-			"value": "78.1 - 6"
+			"value": "80.1 - 6"
 		},
 		{
 			"id": "80.2 - 1",

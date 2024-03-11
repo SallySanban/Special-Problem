@@ -3,58 +3,45 @@
 		{
 			"id": "1",
 			"action": "Talk",
-			"value": "Hello"
+			"name": "YOU",
+			"value": "afad"
 		},
 		{
 			"id": "2",
-			"action": "Change Background",
-			"value": "Street"
+			"action": "Hide Character",
+			"value": "Eloise",
+			"emotion": "Eloise_Happy",
+			"playNextAction": true
 		},
 		{
 			"id": "3",
-			"action": "Change Background",
-			"value": "Forest"
-		},
-		{
-			"id": "4",
-			"action": "Change Background",
-			"value": "Blackout"
-		},
-		{
-			"id": "5",
 			"action": "Hide Textbox",
 			"playNextAction": true
 		},
 		{
+			"id": "4",
+			"action": "Change Background",
+			"value": "Street",
+			"playNextAction": true
+		},
+		{
+			"id": "5",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "<i>It was after class. Our teacher told us to practice the spells we learned at home. Eloise seemed to be having a hard time with it. Ever since her magic got weaker, it was difficult for her to do spells.</i>"
+		},
+		{
 			"id": "6",
-			"action": "Flash Screen"
+			"action": "Show Character",
+			"value": "Eloise",
+			"emotion": "Eloise_Sad",
+			"playNextAction": true
 		},
 		{
 			"id": "7",
 			"action": "Talk",
-			"value": "Goodbye"
-		},
-		{
-			"id": "8",
-			"action": "Show Character",
-			"value": "Eloise",
-			"emotion": "Eloise_Happy"
-		},
-		{
-			"id": "9",
-			"action": "Change Character",
-			"value": "Elder",
-			"emotion": "Elder_Angry"
-		},
-		{
-			"id": "10",
-			"action": "Hide Character",
-			"value": "Elder",
-			"emotion": "Elder_Angry"
-		},
-		{
-			"id": "11",
-			"action": "Hide Textbox"
+			"name": "YOU",
+			"value": "Okay, let's try this again. <color=#205e2d><b>Follow the words.</color></b>"
 		}
 	]
 }
