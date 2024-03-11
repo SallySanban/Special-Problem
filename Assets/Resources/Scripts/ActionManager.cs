@@ -30,7 +30,7 @@ public class ActionManager : MonoBehaviour
         }
         else
         {
-            actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Trial"));
+            actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Main"));
         }
 
         doAction(mainActionId); //start with the 1st id
@@ -126,7 +126,7 @@ public class ActionManager : MonoBehaviour
 
         if(actionToPlay.playNextAction == true)
         {
-            doAction(getNextAction(currentActionId, choiceActionId));
+            StartCoroutine(doNextAction());
         }
     }
 
@@ -172,5 +172,15 @@ public class ActionManager : MonoBehaviour
         }
 
         return currentActionId;
+    }
+
+    IEnumerator doNextAction()
+    {
+        while (Fade.currentlyFading)
+        {
+            yield return null;
+        }
+
+        doAction(getNextAction(currentActionId, choiceActionId));
     }
 }
