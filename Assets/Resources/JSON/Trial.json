@@ -2,46 +2,170 @@
 	"actions": [
 		{
 			"id": "1",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "afad"
+			"action": "Stop Sound",
+			"playNextAction": true
 		},
 		{
 			"id": "2",
-			"action": "Hide Character",
-			"value": "Eloise",
-			"emotion": "Eloise_Happy",
-			"playNextAction": true
-		},
-		{
-			"id": "3",
-			"action": "Hide Textbox",
-			"playNextAction": true
-		},
-		{
-			"id": "4",
 			"action": "Change Background",
 			"value": "Street",
 			"playNextAction": true
 		},
 		{
-			"id": "5",
+			"id": "3",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "<i>It was after class. Our teacher told us to practice the spells we learned at home. Eloise seemed to be having a hard time with it. Ever since her magic got weaker, it was difficult for her to do spells.</i>"
+			"value": "Stop hurting her!"
+		},
+		{
+			"id": "4",
+			"action": "Hide Textbox",
+			"playNextAction": true
+		},
+		{
+			"id": "5",
+			"action": "Play Sound Effect",
+			"value": "Footsteps",
+			"playNextAction": true
 		},
 		{
 			"id": "6",
 			"action": "Show Character",
-			"value": "Eloise",
-			"emotion": "Eloise_Sad",
-			"playNextAction": true
+			"value": "Monster",
+			"emotion": "Monster_Sad"
 		},
 		{
 			"id": "7",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "Okay, let's try this again. <color=#205e2d><b>Follow the words.</color></b>"
+			"value": "Eloise... Are you okay?"
+		},
+		{
+			"id": "8",
+			"action": "Hide Textbox",
+			"playNextAction": true
+		},
+		{
+			"id": "9",
+			"action": "Play Sound Loop",
+			"value": "Epilogue",
+			"playNextAction": true
+		},
+		{
+			"id": "10",
+			"action": "Hide Character",
+			"value": "Monster",
+			"emotion": "Monster_Sad",
+			"playNextAction": true
+		},
+		{
+			"id": "11",
+			"action": "Change Background",
+			"value": "MC and Eloise"
+		},
+		{
+			"id": "12",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "I'm sorry. I understand now. You became a monster... because we made you feel like one."
+		},
+		{
+			"id": "13",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "But I promise you... you're not a monster. You're not a curse. You're the kindest, most patient person I know."
+		},
+		{
+			"id": "14",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "And you're not alone."
+		},
+		{
+			"id": "15",
+			"action": "Change Background",
+			"value": "Blackout",
+			"playNextAction": true
+		},
+		{
+			"id": "16",
+			"action": "Hide Textbox"
+		},
+		{
+			"id": "17",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "You're finally awake."
+		},
+		{
+			"id": "18",
+			"action": "Change Background",
+			"value": "Street",
+			"playNextAction": true
+		},
+		{
+			"id": "19",
+			"action": "Show Character",
+			"value": "Eloise",
+			"emotion": "Eloise_Surprised"
+		},
+		{
+			"id": "20",
+			"action": "Talk",
+			"name": "ELOISE",
+			"value": "[Name]? What happened?"
+		},
+		{
+			"id": "21",
+			"action": "Talk",
+			"name": "",
+			"value": "Eloise! You're awake!"
+		},
+		{
+			"id": "22",
+			"action": "Talk",
+			"name": "",
+			"value": "Hey, guys! Eloise is back!"
+		},
+		{
+			"id": "23",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "I talked to the villagers. And... the elders. I helped them realize that none of this is your fault... and that they should <color=#205e2d><b>try to understand you first, before judging you.</b></color>"
+		},
+		{
+			"id": "24",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "Don't worry. We'll do better, Eloise. From now on."
+		},
+		{
+			"id": "25",
+			"action": "Hide Textbox",
+			"playNextAction": true
+		},
+		{
+			"id": "26",
+			"action": "Change Emotion",
+			"value": "Eloise",
+			"emotion": "Eloise_ReallyHappy"
+		},
+		{
+			"id": "27",
+			"action": "Change Background",
+			"value": "Blackout"
+		},
+		{
+			"id": "28",
+			"action": "Hide Character",
+			"value": "Eloise",
+			"emotion": "Eloise_ReallyHappy",
+			"playNextAction": true
+		},
+		{
+			"id": "29",
+			"action": "Show Text",
+			"value": "THE END"
 		}
 	]
 }

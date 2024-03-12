@@ -19,8 +19,8 @@ public class ActionManager : MonoBehaviour
     {
         instance = this;
 
-        currentActionId = "84";
-        mainActionId = "84";
+        currentActionId = "1";
+        mainActionId = "1";
         choiceActionId = 1;
         insideChoice = false;
 
@@ -30,7 +30,7 @@ public class ActionManager : MonoBehaviour
         }
         else
         {
-            actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Trial"));
+            actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Main"));
         }
 
         doAction(mainActionId); //start with the 1st id
@@ -151,7 +151,14 @@ public class ActionManager : MonoBehaviour
         if(insideChoice)
         {
             //check where the choice ends
-            string nextActionId = currentId.Substring(0, (currentId.Length - 1)) + (currentChoiceId + 1).ToString();
+            int index = currentId.LastIndexOf("- ");
+            string nextActionId = "";
+
+            if (index != -1)
+            {
+                nextActionId = currentId.Substring(0, index + 2) + (currentChoiceId + 1).ToString();
+            }
+            
             Action nextAction = getActionFromId(nextActionId);
 
             if (nextAction == null)
