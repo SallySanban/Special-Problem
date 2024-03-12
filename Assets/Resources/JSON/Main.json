@@ -1188,15 +1188,15 @@
 		},
 		{
 			"id": "92",
-			"action": "Play Sound Effect",
-			"value": "Footsteps",
-			"playNextAction": true
-		},
-		{
-			"id": "93",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>Eloise was found passed out here in this forest!</i>"
+		},
+		{
+			"id": "93",
+			"action": "Play Sound Effect",
+			"value": "Footsteps",
+			"playNextAction": true
 		},
 		{
 			"id": "94",
