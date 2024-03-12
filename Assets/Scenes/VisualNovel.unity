@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 865.43, y: 349.2}
+  m_AnchoredPosition: {x: 0, y: 13.952}
+  m_SizeDelta: {x: 865.43, y: 377.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &180427618
 MonoBehaviour:
@@ -181,11 +181,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: When someone is having a hard time, words of reassurance can help them
-    feel like they are not alone in their situation. These words show the person
-    that there is someone by their side who will stand by them through the tough
-    times and help them if they need. These words reassure them that they have a
-    shoulder to lean on and someone to walk by their side.
+  m_text: After experiencing something traumatic and being overwhelmed with emotion,
+    saying these words to someone only belittles their experience and their feelings.
+    These are not the words they need to hear at the moment and it will only cause
+    them even more pain and anger. Not only will they feel invalidated, but they
+    will also feel alone in their situation, causing them to spiral downwards into
+    their negative thoughts, feelings, and experiences.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7799fb97e6d83a040bd5fdb52fe1c60d, type: 2}
   m_sharedMaterial: {fileID: -8340169245329004, guid: 7799fb97e6d83a040bd5fdb52fe1c60d, type: 2}
@@ -2440,7 +2441,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1603738578}
-  - component: {fileID: 1603738577}
   - component: {fileID: 1603738579}
   m_Layer: 0
   m_Name: AudioManager
@@ -2449,102 +2449,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &1603738577
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603738576}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!4 &1603738578
 Transform:
   m_ObjectHideFlags: 0
@@ -3571,7 +3475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.14, y: -231}
+  m_AnchoredPosition: {x: 0, y: -218}
   m_SizeDelta: {x: 264.41, y: 53.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1789338771
