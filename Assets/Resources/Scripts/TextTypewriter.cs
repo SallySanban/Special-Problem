@@ -40,17 +40,6 @@ public class TextTypewriter
         buildProcess = tmpro.StartCoroutine(Building());
         return buildProcess;
     }
-    
-    public Coroutine Append(string text)
-    {
-        preText = tmpro.text;
-        targetText = text;
-
-        Stop();
-
-        buildProcess = tmpro.StartCoroutine(Building());
-        return buildProcess;
-    }
 
     private Coroutine buildProcess = null;
     public bool isBuilding => buildProcess != null;
