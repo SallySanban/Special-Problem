@@ -19,8 +19,8 @@ public class ActionManager : MonoBehaviour
     {
         instance = this;
 
-        currentActionId = "1";
-        mainActionId = "1";
+        currentActionId = "84";
+        mainActionId = "84";
         choiceActionId = 1;
         insideChoice = false;
 
@@ -30,7 +30,7 @@ public class ActionManager : MonoBehaviour
         }
         else
         {
-            actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Main"));
+            actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Trial"));
         }
 
         doAction(mainActionId); //start with the 1st id
@@ -38,7 +38,7 @@ public class ActionManager : MonoBehaviour
 
     private void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !AskName.instance.inputFieldOnScreen && !ShowChoice.instance.choicesOnScreen && !Talk.instance.textTypewriter.isBuilding && !Fade.currentlyFading && !Flash.instance.currentlyFlashing)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !AskName.instance.inputFieldOnScreen && !ShowChoice.instance.choicesOnScreen && !Popup.instance.popupOnScreen && !Talk.instance.textTypewriter.isBuilding && !Fade.currentlyFading && !Flash.instance.currentlyFlashing)
         {
             if (ShowText.instance.textOnScreen)
             {
@@ -47,7 +47,7 @@ public class ActionManager : MonoBehaviour
 
             doAction(getNextAction(currentActionId, choiceActionId));
         }
-        else if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !AskName.instance.inputFieldOnScreen && !ShowChoice.instance.choicesOnScreen && Talk.instance.textTypewriter.isBuilding)
+        else if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !AskName.instance.inputFieldOnScreen && !ShowChoice.instance.choicesOnScreen && !Popup.instance.popupOnScreen && Talk.instance.textTypewriter.isBuilding)
         {
             Talk.instance.textTypewriter.ForceComplete();
         }
@@ -121,6 +121,9 @@ public class ActionManager : MonoBehaviour
                 break;
             case "Flash Screen":
                 StartCoroutine(Flash.instance.FlashMethod());
+                break;
+            case "Show Notification":
+                StartCoroutine(ShowNotification.instance.ShowNotificationMethod(actionToPlay.value));
                 break;
         }
 

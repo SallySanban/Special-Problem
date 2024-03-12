@@ -162,13 +162,13 @@
 		},
 		{
 			"id": "12.2 - 3.1 - 2.1 - 2.2 - 3",
-			"action": "Change Background",
-			"value": "Tree",
+			"action": "Hide Textbox",
 			"playNextAction": true
 		},
 		{
 			"id": "12.2 - 3.1 - 2.1 - 2.2 - 4",
-			"action": "Hide Textbox"
+			"action": "Change Background",
+			"value": "Tree"
 		},
 		{
 			"id": "12.2 - 3.1 - 2.2 - 1",
@@ -433,52 +433,50 @@
 		},
 		{
 			"id": "54",
-			"action": "Play Sound Loop",
-			"value": "Chapter1",
+			"action": "Change Background",
+			"value": "Blackout",
 			"playNextAction": true
 		},
 		{
 			"id": "55",
-			"action": "Show Character",
-			"value": "Eloise",
-			"emotion": "Eloise_Surprised",
-			"playNextAction": true
+			"action": "Talk",
+			"name": "",
+			"value": "<i>Look... It's Eloise...</i>"
 		},
 		{
 			"id": "56",
-			"action": "Talk",
-			"name": "ELOISE",
-			"value": "Yes, [Name]? What's wrong?"
-		},
-		{
-			"id": "57",
-			"action": "Change Emotion",
-			"emotion": "Eloise_Sad",
-			"playNextAction": true
-		},
-		{
-			"id": "58",
 			"action": "Talk",
 			"name": "",
 			"value": "<i>I heard from my parents that her magic's disappearing...</i>"
 		},
 		{
-			"id": "59",
+			"id": "57",
 			"action": "Talk",
 			"name": "",
-			"value": "<i>Yeah, they said that if we try to be friends with her, we might get cursed!</i>"
+			"value": "<i>Her magic used to be so strong, too. My guess is she's cursed. She must have been punished by the gods. I bet it's her fault.</i>"
 		},
 		{
-			"id": "60",
-			"action": "Talk",
-			"name": "",
-			"value": "<i>Cursed? You think she'll hurt us?</i>"
-		},
-		{
-			"id": "61",
+			"id": "58",
 			"action": "Talk",
 			"name": "",
 			"value": "<i>It's best if we stay away from her. Our magic won't be affected that way.</i>"
+		},
+		{
+			"id": "59",
+			"action": "Hide Textbox",
+			"playNextAction": true
+		},
+		{
+			"id": "60",
+			"action": "Change Background",
+			"value": "School Yard",
+			"playNextAction": true
+		},
+		{
+			"id": "61",
+			"action": "Show Character",
+			"value": "Eloise",
+			"emotion": "Eloise_Sad"
 		},
 		{
 			"id": "62",
@@ -494,12 +492,18 @@
 		},
 		{
 			"id": "64",
+			"action": "Play Sound Loop",
+			"value": "Chapter1",
+			"playNextAction": true
+		},
+		{
+			"id": "65",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>She looks bothered... What should I do about it?</i>"
 		},
 		{
-			"id": "65",
+			"id": "66",
 			"action": "Show Choice",
 			"choices": [
 				"Support her",
@@ -507,84 +511,96 @@
 			]
 		},
 		{
-			"id": "65.1 - 1",
+			"id": "66.1 - 1",
+			"action": "Show Heart",
+			"playNextAction": true
+		},
+		{
+			"id": "66.1 - 2",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "What's wrong, Eloise?"
 		},
 		{
-			"id": "65.1 - 2",
+			"id": "66.1 - 3",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "It's just that... I think people are talking about me, in a bad way. They keep saying I'm cursed because of my magic. It makes me feel like... maybe I am."
 		},
 		{
-			"id": "65.1 - 3",
+			"id": "66.1 - 4",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Don't listen to them, Eloise. They don't know anything about you."
 		},
 		{
-			"id": "65.1 - 4",
-			"action": "Show Heart",
+			"id": "66.1 - 5",
+			"action": "Show Notification",
+			"value": "blue",
 			"playNextAction": true
 		},
 		{
-			"id": "65.1 - 5",
+			"id": "66.1 - 6",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "<link=clickable><color=#0b109c><b>Just because your magic's getting weaker, doesn't mean you're cursed.</b></color></link> You know that, right?"
+			"value": "<link=1><color=#0b109c><b>Just because your magic's getting weaker, doesn't mean you're cursed.</b></color></link> You know that, right?"
 		},
 		{
-			"id": "65.1 - 6",
+			"id": "66.1 - 7",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "I guess you're right..."
 		},
 		{
-			"id": "65.2 - 1",
+			"id": "66.2 - 1",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "What's wrong, Eloise?"
 		},
 		{
-			"id": "65.2 - 2",
+			"id": "66.2 - 2",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "It's just that... I think people are talking about me, in a bad way. They keep saying I'm cursed because of my magic. It makes me feel like... maybe I am."
 		},
 		{
-			"id": "65.2 - 3",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "I mean, there's no other explanation for your magic getting weaker. You need to <link=clickable><color=#cf1006><b>stop feeling sorry for yourself and push yourself harder</b></color></link> so your magic will come back."
+			"id": "66.2 - 3",
+			"action": "Show Notification",
+			"value": "red",
+			"playNextAction": true
 		},
 		{
-			"id": "65.2 - 4",
+			"id": "66.2 - 4",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "I mean, there's no other explanation for your magic getting weaker. You need to <link=2><color=#cf1006><b>stop feeling sorry for yourself and push yourself harder</b></color></link> so your magic will come back."
+		},
+		{
+			"id": "66.2 - 5",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "I guess you're right..."
 		},
 		{
-			"id": "66",
+			"id": "67",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "We should get to class."
 		},
 		{
-			"id": "67",
+			"id": "68",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "[Name], can we go to class together?"
 		},
 		{
-			"id": "68",
+			"id": "69",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>What should I do? People would see if we go together...</i>"
 		},
 		{
-			"id": "69",
+			"id": "70",
 			"action": "Show Choice",
 			"choices": [
 				"Yes",
@@ -592,136 +608,148 @@
 			]
 		},
 		{
-			"id": "69.1 - 1",
+			"id": "70.1 - 1",
 			"action": "Show Heart",
 			"playNextAction": true
 		},
 		{
-			"id": "69.1 - 2",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "Of course we can. <link=clickable><color=#0b109c><b>You're my friend, and I'm proud to be by your side.</b></color></link>"
+			"id": "70.1 - 2",
+			"action": "Show Notification",
+			"value": "blue",
+			"playNextAction": true
 		},
 		{
-			"id": "69.1 - 3",
+			"id": "70.1 - 3",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "Of course we can. <link=3><color=#0b109c><b>You're my friend, and I'm proud to be by your side.</b></color></link>"
+		},
+		{
+			"id": "70.1 - 4",
 			"action": "Change Emotion",
 			"emotion": "Eloise_Happy",
 			"playNextAction": true
 		},
 		{
-			"id": "69.1 - 4",
+			"id": "70.1 - 5",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "Thank you, [Name]... You're too kind."
 		},
 		{
-			"id": "69.1 - 5",
+			"id": "70.1 - 6",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Don't mention it. Let's go, okay?"
 		},
 		{
-			"id": "69.1 - 6",
+			"id": "70.1 - 7",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "I'd like that."
 		},
 		{
-			"id": "69.1 - 7",
+			"id": "70.1 - 8",
 			"action": "Hide Character",
 			"value": "Eloise",
 			"emotion": "Eloise_Happy",
 			"playNextAction": true
 		},
 		{
-			"id": "69.1 - 8",
+			"id": "70.1 - 9",
 			"action": "Hide Textbox",
 			"playNextAction": true
 		},
 		{
-			"id": "69.2 - 1",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "I'm sorry, Eloise, but <link=clickable><color=#cf1006><b>we can't be seen together.</b></color></link> If these people are right about you being cursed, then that wouldn't be good for me."
+			"id": "70.2 - 1",
+			"action": "Show Notification",
+			"value": "red",
+			"playNextAction": true
 		},
 		{
-			"id": "69.2 - 2",
+			"id": "70.2 - 2",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "I'm sorry, Eloise, but <link=4><color=#cf1006><b>we can't be seen together.</b></color></link> If these people are right about you being cursed, then that wouldn't be good for me."
+		},
+		{
+			"id": "70.2 - 3",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "Oh, of course... I won't bother you, then."
 		},
 		{
-			"id": "69.2 - 3",
+			"id": "70.2 - 4",
 			"action": "Hide Character",
 			"value": "Eloise",
 			"emotion": "Eloise_Sad",
 			"playNextAction": true
 		},
 		{
-			"id": "69.2 - 4",
+			"id": "70.2 - 5",
 			"action": "Hide Textbox",
 			"playNextAction": true
 		},
 		{
-			"id": "70",
+			"id": "71",
 			"action": "Change Background",
 			"value": "Street"
 		},
 		{
-			"id": "71",
+			"id": "72",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>It was after class. Our teacher told us to practice the spells we learned at home. Eloise seemed to be having a hard time with it. Ever since her magic got weaker, it was difficult for her to do spells.</i>"
 		},
 		{
-			"id": "72",
+			"id": "73",
 			"action": "Show Character",
 			"value": "Eloise",
 			"emotion": "Eloise_Sad",
 			"playNextAction": true
 		},
 		{
-			"id": "73",
+			"id": "74",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Okay, let's try this again. <color=#205e2d><b>Follow the words.</color></b>"
 		},
 		{
-			"id": "74",
+			"id": "75",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>Moonlight's glow and starry night, Feathered whispers, soft and light,<br>In this spell, enchantment we weave, A touch of magic, for you to receive.</i>"
 		},
 		{
-			"id": "75",
+			"id": "76",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "Okay... Moonlight's glow and starry night... Feathered whispers..."
 		},
 		{
-			"id": "76",
+			"id": "77",
 			"action": "Character Shake"
 		},
 		{
-			"id": "77",
+			"id": "78",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "What's wrong? What happened?"
 		},
 		{
-			"id": "78",
+			"id": "79",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "I messed it up... I mess it up every time. I can't do anything right..."
 		},
 		{
-			"id": "79",
+			"id": "80",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>What should I tell her?</i>"
 		},
 		{
-			"id": "80",
+			"id": "81",
 			"action": "Show Choice",
 			"choices": [
 				"Let's practice together",
@@ -729,36 +757,42 @@
 			]
 		},
 		{
-			"id": "80.1 - 1",
+			"id": "81.1 - 1",
+			"action": "Show Heart",
+			"playNextAction": true
+		},
+		{
+			"id": "81.1 - 2",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Don't worry, Eloise. There's a first time for everything. We can practice the spell together."
 		},
 		{
-			"id": "80.1 - 2",
+			"id": "81.1 - 3",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "Do you mean it?"
 		},
 		{
-			"id": "80.1 - 3",
-			"action": "Show Heart",
+			"id": "81.1 - 4",
+			"action": "Show Notification",
+			"value": "blue",
 			"playNextAction": true
 		},
 		{
-			"id": "80.1 - 4",
+			"id": "81.1 - 5",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "Of course. I'll help you. <link=clickable><color=#0b109c><b>Let's do it one step at a time. It's okay to make mistakes; you can always try again.</b></color></link>"
+			"value": "Of course. I'll help you. <link=5><color=#0b109c><b>Let's do it one step at a time. It's okay to make mistakes; you can always try again.</b></color></link>"
 		},
 		{
-			"id": "80.1 - 5",
+			"id": "81.1 - 6",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Repeat after me, okay? <i>Moonlight's glow and starry night.</i>"
 		},
 		{
-			"id": "80.1 - 6",
+			"id": "81.1 - 7",
 			"action": "Show Choice",
 			"choices": [
 				"Moonlight's glow and starry night.",
@@ -766,13 +800,13 @@
 			]
 		},
 		{
-			"id": "80.1 - 6.1 - 1",
+			"id": "81.1 - 7.1 - 1",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>Feathered whispers, soft and light.</i>"
 		},
 		{
-			"id": "80.1 - 6.1 - 2",
+			"id": "81.1 - 7.1 - 2",
 			"action": "Show Choice",
 			"choices": [
 				"Feathered whispers, soft and bright.",
@@ -780,28 +814,28 @@
 			]
 		},
 		{
-			"id": "80.1 - 6.1 - 2.1 - 1",
+			"id": "81.1 - 7.1 - 2.1 - 1",
 			"action": "Character Shake"
 		},
 		{
-			"id": "80.1 - 6.1 - 2.1 - 2",
+			"id": "81.1 - 7.1 - 2.1 - 2",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "No worries, Eloise. You can try again."
 		},
 		{
-			"id": "80.1 - 6.1 - 2.1 - 3",
+			"id": "81.1 - 7.1 - 2.1 - 3",
 			"action": "Repeat Choice",
-			"value": "80.1 - 6.1 - 2"
+			"value": "81.1 - 7.1 - 2"
 		},
 		{
-			"id": "80.1 - 6.1 - 2.2 - 1",
+			"id": "81.1 - 7.1 - 2.2 - 1",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>In this spell, enchantment we weave.</i>"
 		},
 		{
-			"id": "80.1 - 6.1 - 2.2 - 2",
+			"id": "81.1 - 7.1 - 2.2 - 2",
 			"action": "Show Choice",
 			"choices": [
 				"In this spell, enchantment we leave.",
@@ -809,28 +843,28 @@
 			]
 		},
 		{
-			"id": "80.1 - 6.1 - 2.2 - 2.1 - 1",
+			"id": "81.1 - 7.1 - 2.2 - 2.1 - 1",
 			"action": "Character Shake"
 		},
 		{
-			"id": "80.1 - 6.1 - 2.2 - 2.1 - 2",
+			"id": "81.1 - 7.1 - 2.2 - 2.1 - 2",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "That’s not quite right, but don’t worry! Let's try it again!"
 		},
 		{
-			"id": "80.1 - 6.1 - 2.2 - 2.1 - 3",
+			"id": "81.1 - 7.1 - 2.2 - 2.1 - 3",
 			"action": "Repeat Choice",
-			"value": "80.1 - 6.1 - 2.2 - 2"
+			"value": "81.1 - 7.1 - 2.2 - 2"
 		},
 		{
-			"id": "80.1 - 6.1 - 2.2 - 2.2 - 1",
+			"id": "81.1 - 7.1 - 2.2 - 2.2 - 1",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>A touch of magic, for you to receive.</i>"
 		},
 		{
-			"id": "80.1 - 6.1 - 2.2 - 2.2 - 2",
+			"id": "81.1 - 7.1 - 2.2 - 2.2 - 2",
 			"action": "Show Choice",
 			"choices": [
 				"A touch of magic, for you to receive.",
@@ -838,97 +872,109 @@
 			]
 		},
 		{
-			"id": "80.1 - 6.1 - 2.2 - 2.2 - 2.1 - 1",
+			"id": "81.1 - 7.1 - 2.2 - 2.2 - 2.1 - 1",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "You did it! I'm so proud of you, Eloise."
 		},
 		{
-			"id": "80.1 - 6.1 - 2.2 - 2.2 - 2.1 - 2",
+			"id": "81.1 - 7.1 - 2.2 - 2.2 - 2.1 - 2",
 			"action": "Change Emotion",
 			"emotion": "Eloise_Happy",
 			"playNextAction": true
 		},
 		{
-			"id": "80.1 - 6.1 - 2.2 - 2.2 - 2.1 - 3",
+			"id": "81.1 - 7.1 - 2.2 - 2.2 - 2.1 - 3",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "Thank you for believing in me, [Name]..."
 		},
 		{
-			"id": "80.1 - 6.1 - 2.2 - 2.2 - 2.1 - 4",
+			"id": "81.1 - 7.1 - 2.2 - 2.2 - 2.1 - 4",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "No problem. Are you up for the next spell we have to practice?"
 		},
 		{
-			"id": "80.1 - 6.1 - 2.2 - 2.2 - 2.1 - 5",
+			"id": "81.1 - 7.1 - 2.2 - 2.2 - 2.1 - 5",
 			"action": "Change Emotion",
 			"emotion": "Eloise_Sad",
 			"playNextAction": true
 		},
 		{
-			"id": "80.1 - 6.1 - 2.2 - 2.2 - 2.2 - 1",
+			"id": "81.1 - 7.1 - 2.2 - 2.2 - 2.2 - 1",
 			"action": "Character Shake"
 		},
 		{
-			"id": "80.1 - 6.1 - 2.2 - 2.2 - 2.2 - 2",
+			"id": "81.1 - 7.1 - 2.2 - 2.2 - 2.2 - 2",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "We're almost there! You can do it!"
 		},
 		{
-			"id": "80.1 - 6.1 - 2.2 - 2.2 - 2.2 - 3",
+			"id": "81.1 - 7.1 - 2.2 - 2.2 - 2.2 - 3",
 			"action": "Repeat Choice",
-			"value": "80.1 - 6.1 - 2.2 - 2.2 - 2"
+			"value": "81.1 - 7.1 - 2.2 - 2.2 - 2"
 		},
 		{
-			"id": "80.1 - 6.2 - 1",
+			"id": "81.1 - 7.2 - 1",
 			"action": "Character Shake"
 		},
 		{
-			"id": "80.1 - 6.2 - 2",
+			"id": "81.1 - 7.2 - 2",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "It's okay, let’s keep trying!"
 		},
 		{
-			"id": "80.1 - 6.2 - 3",
+			"id": "81.1 - 7.2 - 3",
 			"action": "Repeat Choice",
-			"value": "80.1 - 6"
+			"value": "81.1 - 7"
 		},
 		{
-			"id": "80.2 - 1",
+			"id": "81.2 - 1",
+			"action": "Show Notification",
+			"value": "red",
+			"playNextAction": true
+		},
+		{
+			"id": "81.2 - 2",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "<link=clickable><color=#cf1006><b>It's not that hard, Eloise. Stop complaining all the time.</b></color></link>"
+			"value": "<link=6><color=#cf1006><b>It's not that hard, Eloise. Stop complaining all the time.</b></color></link>"
 		},
 		{
-			"id": "80.2 - 2",
+			"id": "81.2 - 3",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "I'm sorry, [Name]... It must be because my magic is getting weaker. I feel so useless."
 		},
 		{
-			"id": "80.2 - 3",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "<link=clickable><color=#cf1006><b>It's all in your head, you know. Just snap out of it.</b></color></link> If you tried harder, you would be able to do it, too."
+			"id": "81.2 - 4",
+			"action": "Show Notification",
+			"value": "red",
+			"playNextAction": true
 		},
 		{
-			"id": "81",
+			"id": "81.2 - 5",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "<link=7><color=#cf1006><b>It's all in your head, you know. Just snap out of it.</b></color></link> If you tried harder, you would be able to do it, too."
+		},
+		{
+			"id": "82",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "I think I need to take a break..."
 		},
 		{
-			"id": "82",
+			"id": "83",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>What should I do?</i>"
 		},
 		{
-			"id": "83",
+			"id": "84",
 			"action": "Show Choice",
 			"choices": [
 				"Take a break",
@@ -936,358 +982,376 @@
 			]
 		},
 		{
-			"id": "83.1 - 1",
+			"id": "84.1 - 1",
 			"action": "Show Heart",
 			"playNextAction": true
 		},
 		{
-			"id": "83.1 - 2",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "Good idea. You're right, <link=clickable><color=#0b109c><b>it's important to take breaks every once in a while.</b></color></link>"
+			"id": "84.1 - 2",
+			"action": "Show Notification",
+			"value": "blue",
+			"playNextAction": true
 		},
 		{
-			"id": "83.1 - 3",
+			"id": "84.1 - 3",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "Good idea. You're right, <link=8><color=#0b109c><b>it's important to take breaks every once in a while.</b></color></link>"
+		},
+		{
+			"id": "84.1 - 4",
 			"action": "Change Emotion",
 			"emotion": "Eloise_Happy",
 			"playNextAction": true
 		},
 		{
-			"id": "83.1 - 4",
+			"id": "84.1 - 5",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "Thank you for being so understanding, [Name]."
 		},
 		{
-			"id": "83.1 - 5",
+			"id": "84.1 - 6",
 			"action": "Hide Character",
 			"value": "Eloise",
 			"emotion": "Eloise_Happy",
 			"playNextAction": true
 		},
 		{
-			"id": "83.1 - 6",
+			"id": "84.1 - 7",
 			"action": "Stop Sound",
 			"playNextAction": true
 		},
 		{
-			"id": "83.1 - 7",
+			"id": "84.1 - 8",
 			"action": "Change Background",
 			"value": "Blackout",
 			"playNextAction": true
 		},
 		{
-			"id": "83.1 - 8",
+			"id": "84.1 - 9",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "I'll always remember how kind you are."
 		},
 		{
-			"id": "83.2 - 1",
+			"id": "84.2 - 1",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "How come? I think we should keep going. There are a bunch of other spells we need to practice."
 		},
 		{
-			"id": "83.2 - 2",
+			"id": "84.2 - 2",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "I think I'm feeling kind of tired..."
 		},
 		{
-			"id": "83.2 - 3",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "But we've accomplished so little. <link=clickable><color=#cf1006><b>It's not good to be lazy.</b></color></link> What about a different spell? I bet you'll be able to manage that."
+			"id": "84.2 - 3",
+			"action": "Show Notification",
+			"value": "red",
+			"playNextAction": true
 		},
 		{
-			"id": "83.2 - 4",
+			"id": "84.2 - 4",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "But we've accomplished so little. <link=9><color=#cf1006><b>It's not good to be lazy.</b></color></link> What about a different spell? I bet you'll be able to manage that."
+		},
+		{
+			"id": "84.2 - 5",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "Are... are you sure about that?"
 		},
 		{
-			"id": "83.2 - 5",
+			"id": "84.2 - 6",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Yes, come on! Let's try another spell!"
 		},
 		{
-			"id": "83.2 - 6",
+			"id": "84.2 - 7",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "How about this: <i>Shimmering dew, blossom anew.</i>"
 		},
 		{
-			"id": "83.2 - 7",
+			"id": "84.2 - 8",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "Shimmering... Dew..."
 		},
 		{
-			"id": "83.2 - 8",
+			"id": "84.2 - 9",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "Blossom... A–"
 		},
 		{
-			"id": "83.2 - 9",
+			"id": "84.2 - 10",
 			"action": "Flash Screen",
 			"playNextAction": true
 		},
 		{
-			"id": "83.2 - 10",
+			"id": "84.2 - 11",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Eloise!"
 		},
 		{
-			"id": "83.2 - 11",
+			"id": "84.2 - 12",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Eloise! Are you okay?"
 		},
 		{
-			"id": "83.2 - 12",
+			"id": "84.2 - 13",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "No!"
 		},
 		{
-			"id": "83.2 - 13",
+			"id": "84.2 - 14",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "Is this what you wanted, [Name]? To see me fail like I always do?"
 		},
 		{
-			"id": "83.2 - 14",
+			"id": "84.2 - 15",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "No, I–"
 		},
 		{
-			"id": "83.2 - 15",
+			"id": "84.2 - 16",
 			"action": "Hide Character",
 			"value": "Eloise",
 			"emotion": "Eloise_Sad",
 			"playNextAction": true
 		},
 		{
-			"id": "83.2 - 16",
+			"id": "84.2 - 17",
 			"action": "Stop Sound",
 			"playNextAction": true
 		},
 		{
-			"id": "83.2 - 17",
+			"id": "84.2 - 18",
 			"action": "Change Background",
 			"value": "Blackout",
 			"playNextAction": true
 		},
 		{
-			"id": "83.2 - 18",
+			"id": "84.2 - 19",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "No! Don't! Give me more time!"
 		},
 		{
-			"id": "84",
+			"id": "85",
 			"action": "Hide Textbox",
 			"playNextAction": true
 		},
 		{
-			"id": "85",
+			"id": "86",
 			"action": "Show Text",
 			"value": "CHAPTER II"
 		},
 		{
-			"id": "86",
+			"id": "87",
 			"action": "Play Sound Loop",
 			"value": "Chapter2",
 			"playNextAction": true
 		},
 		{
-			"id": "87",
+			"id": "88",
 			"action": "Change Background",
 			"value": "Forest"
-		},
-		{
-			"id": "88",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "<i>Where is this place...</i>"
 		},
 		{
 			"id": "89",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "<i>Oh... This is where I talked with the ancient spirit.</i>"
+			"value": "<i>Where is this place...</i>"
 		},
 		{
 			"id": "90",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "<i>...Wait. Oh, no. Oh, no! I remember this!</i>"
+			"value": "<i>Oh... This is where I talked with the ancient spirit.</i>"
 		},
 		{
 			"id": "91",
-			"action": "Play Sound Effect",
-			"value": "Footsteps",
-			"playNextAction": true
+			"action": "Talk",
+			"name": "YOU",
+			"value": "<i>...Wait. Oh, no. Oh, no! I remember this!</i>"
 		},
 		{
 			"id": "92",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "<i>Eloise was found passed out here in this forest!</i>"
+			"action": "Play Sound Effect",
+			"value": "Footsteps",
+			"playNextAction": true
 		},
 		{
 			"id": "93",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "<i>Oh, please, let me not be too late...</i>"
+			"value": "<i>Eloise was found passed out here in this forest!</i>"
 		},
 		{
 			"id": "94",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "<i>Oh, please, let me not be too late...</i>"
+		},
+		{
+			"id": "95",
 			"action": "Play Sound Effect",
 			"value": "Footsteps",
 			"playNextAction": true
 		},
 		{
-			"id": "95",
+			"id": "96",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Where... is she?"
 		},
 		{
-			"id": "96",
+			"id": "97",
 			"action": "Change Background",
 			"value": "Eloise Unconscious",
 			"playNextAction": true
 		},
 		{
-			"id": "97",
-			"action": "Hide Textbox"
-		},
-		{
 			"id": "98",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "Eloise! No! Please... Don't leave me. I-I'll try to save you."
+			"action": "Hide Textbox"
 		},
 		{
 			"id": "99",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "<i>Healing hands... Soothe one's pain...</i>"
+			"value": "Eloise! No! Please... Don't leave me. I-I'll try to save you."
 		},
 		{
 			"id": "100",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "<i>T-to save one's soul... That their life... won't vanish in vain...</i>"
+			"value": "<i>Healing hands... Soothe one's pain...</i>"
 		},
 		{
 			"id": "101",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "Please..."
+			"value": "<i>T-to save one's soul... That their life... won't vanish in vain...</i>"
 		},
 		{
 			"id": "102",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "Please..."
+		},
+		{
+			"id": "103",
 			"action": "Hide Textbox",
 			"playNextAction": true
 		},
 		{
-			"id": "103",
+			"id": "104",
 			"action": "Flash Screen",
 			"playNextAction": true
 		},
 		{
-			"id": "104",
+			"id": "105",
 			"action": "Change Background",
 			"value": "Forest",
 			"playNextAction": true
 		},
 		{
-			"id": "105",
+			"id": "106",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Eloise? You're okay, Eloise... Can you hear me?"
 		},
 		{
-			"id": "106",
+			"id": "107",
 			"action": "Stop Sound",
 			"playNextAction": true
 		},
 		{
-			"id": "107",
+			"id": "108",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "No... No! Don't hurt me!"
 		},
 		{
-			"id": "108",
+			"id": "109",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>It was heartbreaking. She was scared of me. She was shaking like a child, hugging herself in fear.</i>"
 		},
 		{
-			"id": "109",
+			"id": "110",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Eloise? What's wrong? I won't hurt you! It's me, [Name]!"
 		},
 		{
-			"id": "110",
+			"id": "111",
 			"action": "Show Character",
 			"value": "Eloise",
 			"emotion": "Eloise_Sad",
 			"playNextAction": true
 		},
 		{
-			"id": "111",
+			"id": "112",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "[Name]?"
 		},
 		{
-			"id": "112",
+			"id": "113",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Yes, it's me. You're safe now. Breathe in, and breathe out."
 		},
 		{
-			"id": "113",
+			"id": "114",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Can you tell me what happened?"
 		},
 		{
-			"id": "114",
+			"id": "115",
 			"action": "Play Sound Loop",
 			"value": "Chapter2_3",
 			"playNextAction": true
 		},
 		{
-			"id": "115",
+			"id": "116",
 			"action": "Talk",
 			"name": "ELOISE",
-			"value": "This morning... Some of the villagers threw rocks at me... They said it's because I'm cursed. They said I deserved it. I was hit so many times... It hurt so much... And the next thing I knew, I passed out..."
+			"value": "This morning... Some of the villagers threw rocks at me... They said it's because I'm cursed. They said I deserved it."
 		},
 		{
-			"id": "116",
+			"id": "117",
+			"action": "Talk",
+			"name": "ELOISE",
+			"value": "I was hit so many times... It hurt so much... And the next thing I knew, I passed out..."
+		},
+		{
+			"id": "118",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "W-why is this happening to me? Why? I never did anything wrong! It's not my fault my magic's getting weaker! I didn't ask for this to happen to me!"
 		},
 		{
-			"id": "117",
+			"id": "119",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>She seems... sad. It's the first time I've seen her like this. Eloise has always been so kind and reserved... What should I say?</i>"
 		},
 		{
-			"id": "118",
+			"id": "120",
 			"action": "Show Choice",
 			"choices": [
 				"I'll help you",
@@ -1295,314 +1359,332 @@
 			]
 		},
 		{
-			"id": "118.1 - 1",
+			"id": "120.1 - 1",
 			"action": "Show Heart",
 			"playNextAction": true
 		},
 		{
-			"id": "118.1 - 2",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "Calm down, Eloise. <link=clickable><color=#0b109c><b>What you're feeling is completely understandable.</b></color></link> Don't worry, I'll help you. I'll... talk to the elders and tell them what happened."
+			"id": "120.1 - 2",
+			"action": "Show Notification",
+			"value": "blue",
+			"playNextAction": true
 		},
 		{
-			"id": "118.1 - 3",
+			"id": "120.1 - 3",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "Calm down, Eloise. <link=10><color=#0b109c><b>What you're feeling is completely understandable.</b></color></link> Don't worry, I'll help you. I'll... talk to the elders and tell them what happened."
+		},
+		{
+			"id": "120.1 - 4",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Maybe they'll understand! Maybe you can even explain to them!"
 		},
 		{
-			"id": "118.2 - 1",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "<link=clickable><color=#cf1006><b>You're overreacting, Eloise. Your situation could be worse.</b></color></link> It's a good thing I got here on time... at least you're still alive and breathing."
+			"id": "120.2 - 1",
+			"action": "Show Notification",
+			"value": "red",
+			"playNextAction": true
 		},
 		{
-			"id": "118.2 - 2",
+			"id": "120.2 - 2",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "<link=11><color=#cf1006><b>You're overreacting, Eloise. Your situation could be worse.</b></color></link> It's a good thing I got here on time... at least you're still alive and breathing."
+		},
+		{
+			"id": "120.2 - 3",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "We can easily solve your problems by talking to the elders and telling them what happened. They might even give you a chance to explain!"
 		},
 		{
-			"id": "119",
+			"id": "121",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "Explain what? Why my magic's getting weaker? I don't know either, [Name]! I don't know why my magic's suddenly getting weaker!"
 		},
 		{
-			"id": "120",
+			"id": "122",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "Maybe I'm tired of always trying to be the best in class! Maybe I'm tired of always having to make my parents proud!"
 		},
 		{
-			"id": "121",
+			"id": "123",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "I'm just... so sick of being a lazy, worhless <color=#205e2d><b>monster</b></color>... I... I want to <i>die.</i>"
 		},
 		{
-			"id": "122",
+			"id": "124",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "And everyone else... They just look at me like I deserve it. And you're telling me that the elders will understand? They didn't even try to stop it when the villagers threw rocks at me!"
 		},
 		{
-			"id": "123",
+			"id": "125",
 			"action": "Change Background",
 			"value": "Blackout",
 			"playNextAction": true
 		},
 		{
-			"id": "124",
+			"id": "126",
 			"action": "Talk",
 			"name": "ELOISE",
 			"value": "You don't understand, [Name]... They don't understand... Nobody does..."
 		},
 		{
-			"id": "125",
+			"id": "127",
 			"action": "Hide Character",
 			"value": "Eloise",
 			"emotion": "Eloise_Sad",
 			"playNextAction": true
 		},
 		{
-			"id": "126",
+			"id": "128",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "No! Eloise! Come back!"
 		},
 		{
-			"id": "127",
+			"id": "129",
 			"action": "Hide Textbox",
 			"playNextAction": true
 		},
 		{
-			"id": "128",
+			"id": "130",
 			"action": "Show Text",
 			"value": "CHAPTER III"
 		},
 		{
-			"id": "129",
+			"id": "131",
 			"action": "Change Background",
 			"value": "Street",
 			"playNextAction": true
 		},
 		{
-			"id": "130",
+			"id": "132",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>I'm... I'm back at the village!</i>"
 		},
 		{
-			"id": "131",
+			"id": "133",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>...Wait, Eloise!</i>"
 		},
 		{
-			"id": "132",
+			"id": "134",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>I need to find Eloise!</i>"
 		},
 		{
-			"id": "133",
+			"id": "135",
 			"action": "Hide Textbox",
 			"playNextAction": true
 		},
 		{
-			"id": "134",
-			"action": "Play Sound Effect",
-			"value": "Footsteps",
-			"playNextAction": true
-		},
-		{
-			"id": "135",
-			"action": "Show Character",
-			"value": "Elder",
-			"emotion": "Elder_Angry"
-		},
-		{
 			"id": "136",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "Grand Elder, you have to help me! I need to find Eloise. Please. You must have some spell that can show me. Please, tell me where she is!"
+			"action": "Play Sound Effect",
+			"value": "Footsteps"
 		},
 		{
 			"id": "137",
-			"action": "Talk",
-			"name": "GRAND ELDER",
-			"value": "You mean you don't know yet, child? That monster is wreaking havoc in the entire village! It has brought the curse upon us!"
+			"action": "Show Character",
+			"value": "Elder",
+			"emotion": "Elder_Angry",
+			"playNextAction": true
 		},
 		{
 			"id": "138",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "<i>Monster? What monster?</i>"
+			"value": "Grand Elder!"
 		},
 		{
 			"id": "139",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "What are you talking about?"
+			"value": "Grand Elder, you have to help me! I need to find Eloise. Please. You must have some spell that can show me. Please, tell me where she is!"
 		},
 		{
 			"id": "140",
 			"action": "Talk",
-			"name": "YOU",
-			"value": "<i>Eloise is not a monster...</i>"
+			"name": "GRAND ELDER",
+			"value": "You mean you don't know yet, child? That monster is wreaking havoc in the entire village! It has brought the curse upon us!"
 		},
 		{
 			"id": "141",
 			"action": "Talk",
-			"name": "GRAND ELDER",
-			"value": "The gods have revealed to me through a spell that the cursed one will destroy our village if it isn't stopped. This is what you're here for, [Name]. You must protect us from its curse!"
+			"name": "YOU",
+			"value": "<i>Monster? What monster?</i>"
 		},
 		{
 			"id": "142",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "Stop! Eloise isn't cursed! And she's not a monster!"
+			"value": "What are you talking about?"
 		},
 		{
 			"id": "143",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "<i>Eloise is not a monster...</i>"
+		},
+		{
+			"id": "144",
+			"action": "Talk",
+			"name": "GRAND ELDER",
+			"value": "The gods have revealed to me through a spell that the cursed one will destroy our village if it isn't stopped. This is what you're here for, [Name]. You must protect us from its curse!"
+		},
+		{
+			"id": "145",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "Stop! Eloise isn't cursed! And she's not a monster!"
+		},
+		{
+			"id": "146",
 			"action": "Talk",
 			"name": "GRAND ELDER",
 			"value": "See for yourself, child!"
 		},
 		{
-			"id": "144",
+			"id": "147",
 			"action": "Hide Textbox",
 			"playNextAction": true
 		},
 		{
-			"id": "145",
+			"id": "148",
 			"action": "Change Character",
 			"value": "Monster",
 			"emotion": "Monster_Sad"
 		},
 		{
-			"id": "146",
+			"id": "149",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>No... It couldn't be.</i>"
 		},
 		{
-			"id": "147",
+			"id": "150",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "...Eloise?"
 		},
 		{
-			"id": "148",
+			"id": "151",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "<i>She was being surrounded by the people of the village. But she wasn't attacking. She was letting them hurt her. Almost as if... she wanted them to.</i>"
 		},
 		{
-			"id": "149",
+			"id": "152",
 			"action": "Play Sound Effect",
 			"value": "Monster Scream"
-		},
-		{
-			"id": "150",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "<i>Her scream... It sounded... sad. Scared.</i>"
-		},
-		{
-			"id": "151",
-			"action": "Talk",
-			"name": "GRAND ELDER",
-			"value": "Now's your chance, [Name]! Kill it!"
-		},
-		{
-			"id": "152",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "<i>It's Eloise.</i>"
 		},
 		{
 			"id": "153",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "...No."
+			"value": "<i>Her scream... It sounded... sad. Scared.</i>"
 		},
 		{
 			"id": "154",
+			"action": "Talk",
+			"name": "GRAND ELDER",
+			"value": "Now's your chance, [Name]! Kill it!"
+		},
+		{
+			"id": "155",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "<i>It's Eloise.</i>"
+		},
+		{
+			"id": "156",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "...No."
+		},
+		{
+			"id": "157",
 			"action": "Change Character",
 			"value": "Elder",
 			"emotion": "Elder_Angry",
 			"playNextAction": true
 		},
 		{
-			"id": "155",
+			"id": "158",
 			"action": "Talk",
 			"name": "GRAND ELDER",
 			"value": "[Name], have you gone mad? That <i>thing</i> is–"
 		},
 		{
-			"id": "156",
+			"id": "159",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Still my friend! Look at her, she's not hurting anyone at all! She's cowering in fear!"
 		},
 		{
-			"id": "157",
+			"id": "160",
 			"action": "Talk",
 			"name": "GRAND ELDER",
 			"value": "It doesn't matter! This unsightly beast – it's a threat to the village!"
 		},
 		{
-			"id": "158",
+			"id": "161",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "But why? She doesn't deserve this! Just because her magic is weak, doesn't mean she should be treated any less than human!"
 		},
 		{
-			"id": "159",
+			"id": "162",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "When was the last time you tried to understand her? When was the last time you treated her with kindness? Did you even bother talking to her? Asking if she was okay?"
 		},
 		{
-			"id": "160",
+			"id": "163",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "Or did you just assume she was cursed and cast her aside like she was never even part of the village?"
 		},
 		{
-			"id": "161",
+			"id": "164",
 			"action": "Talk",
 			"name": "YOU",
 			"value": "We need to help her. There's still time. We can still make things right."
 		},
 		{
-			"id": "162",
+			"id": "165",
 			"action": "Stop Sound",
 			"playNextAction": true
 		},
 		{
-			"id": "163",
+			"id": "166",
 			"action": "Talk",
 			"name": "GRAND ELDER",
 			"value": "You <i>dare</i> question my authority? You would challenge the choices I made?"
 		},
 		{
-			"id": "164",
+			"id": "167",
 			"action": "Talk",
 			"name": "GRAND ELDER",
 			"value": "You ungrateful brat! If you want to save this monster – you will have to go through me."
 		},
 		{
-			"id": "165",
+			"id": "168",
 			"action": "Play Sound Loop",
 			"value": "Combat",
 			"playNextAction": true
 		},
 		{
-			"id": "166",
+			"id": "169",
 			"action": "Change Scene",
 			"value": "Combat"
 		}

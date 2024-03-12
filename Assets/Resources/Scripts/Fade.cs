@@ -7,17 +7,20 @@ using TMPro;
 public class Fade : MonoBehaviour
 {
     public static bool currentlyFading = false;
-    static float time = 0.02f;
 
-    public static IEnumerator FadeMethod(Image image, bool fadeIn)
+    public static IEnumerator FadeMethod(Image image, bool fadeIn, float fadeOpacity = 1, float time = 0.02f)
     {
+        float originalR = image.color.r;
+        float originalG = image.color.g;
+        float originalB = image.color.b;
+
         if (!fadeIn)
         {
             currentlyFading = true;
 
-            for (float i = 1; i >= 0; i -= time)
+            for (float i = fadeOpacity; i >= 0; i -= time)
             {
-                image.color = new Color(1, 1, 1, i);
+                image.color = new Color(originalR, originalG, originalB, i);
                 yield return null;
             }
 
@@ -30,9 +33,9 @@ public class Fade : MonoBehaviour
         {
             currentlyFading = true;
 
-            for (float i = 0; i <= 1; i += time)
+            for (float i = 0; i <= fadeOpacity; i += time)
             {
-                image.color = new Color(1, 1, 1, i);
+                image.color = new Color(originalR, originalG, originalB, i);
                 yield return null;
             }
 
@@ -40,11 +43,11 @@ public class Fade : MonoBehaviour
         }
     }
 
-    public static IEnumerator FadeMethod(TextMeshProUGUI text, bool fadeIn)
+    public static IEnumerator FadeMethod(TextMeshProUGUI text, bool fadeIn, float fadeOpacity = 1, float time = 0.02f)
     {
         if (!fadeIn)
         {
-            for (float i = 1; i >= 0; i -= time)
+            for (float i = fadeOpacity; i >= 0; i -= time)
             {
                 text.color = new Color(1, 1, 1, i);
                 yield return null;
@@ -52,7 +55,7 @@ public class Fade : MonoBehaviour
         }
         else
         {
-            for (float i = 0; i <= 1; i += time)
+            for (float i = 0; i <= fadeOpacity; i += time)
             {
                 text.color = new Color(1, 1, 1, i);
                 yield return null;
