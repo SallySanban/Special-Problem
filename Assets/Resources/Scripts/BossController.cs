@@ -98,7 +98,7 @@ public class BossController : NetworkBehaviour
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         CombatManager.Instance.EndScene();
 
