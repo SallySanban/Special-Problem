@@ -41,7 +41,7 @@ public class Popup : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && popupOnScreen == false)
         {
             var wordIndex = TMP_TextUtilities.FindIntersectingLink(clickedText, Input.mousePosition, camera);
 
