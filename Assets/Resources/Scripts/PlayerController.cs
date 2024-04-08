@@ -157,7 +157,7 @@ public class PlayerController : NetworkBehaviour
 
     IEnumerator Revive()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
 
