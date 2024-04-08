@@ -16,7 +16,7 @@ public class BossController : NetworkBehaviour
     private bool isFlipped = false;
 
     [SerializeField] public Transform attackPoint;
-    public float attackRange = 1.3f;
+    public float attackRange = 0.2f;
     private int damage = 20;
 
     private NetworkVariable<float> bossHealthBarFillValue = new(0);
