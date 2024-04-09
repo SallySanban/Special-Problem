@@ -35,8 +35,8 @@ public class ShowHideCharacter : MonoBehaviour
         }
         else
         {
-            StartCoroutine(Fade.FadeMethod(characterEmotion, false));
             StartCoroutine(Fade.FadeMethod(character, false));
+            StartCoroutine(Fade.FadeMethod(characterEmotion, false));
         }
     }
 }
