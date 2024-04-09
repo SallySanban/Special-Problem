@@ -26,8 +26,6 @@ public class ChangeBackground : MonoBehaviour
         {
             if (background.gameObject.activeSelf)   //if the background is on the scene (switching from one bg to another)
             {
-                StartCoroutine(Fade.FadeMethod(background, false)); //deletes background
-
                 StartCoroutine(SwitchBackground(filename));
             }
             else //if background is not on scene (going from blackout - where bg doesnt exist - to existing bg)
@@ -44,7 +42,7 @@ public class ChangeBackground : MonoBehaviour
 
     IEnumerator SwitchBackground(string filename)
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return StartCoroutine(Fade.FadeMethod(background, false)); //deletes background
 
         background.gameObject.SetActive(true);
         background.color = new Color(1, 1, 1, 0);
