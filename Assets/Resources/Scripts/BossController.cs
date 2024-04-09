@@ -63,6 +63,16 @@ public class BossController : NetworkBehaviour
 
         if (hitPlayer == null) return;
 
+        //if (hitPlayer.TryGetComponent(out Rigidbody2D rb))
+        //{
+        //    Vector2 move = (hitPlayer.transform.position - transform.position).normalized;
+        //    float strength = 3f;
+
+        //    rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+
+        //    rb.AddForce(move * strength, ForceMode2D.Impulse);
+        //}
+
         if (hitPlayer.TryGetComponent(out PlayerController playerController))
         {
             playerController.GetDamageServerRpc(damage);
@@ -103,5 +113,10 @@ public class BossController : NetworkBehaviour
         CombatManager.Instance.EndScene();
 
         Destroy(gameObject);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
