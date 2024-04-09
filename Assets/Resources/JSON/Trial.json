@@ -2,33 +2,70 @@
 	"actions": [
 		{
 			"id": "1",
-			"action": "Change Background",
-			"value": "Street",
+			"action": "Play Sound Loop",
+			"value": "Chapter2_3",
 			"playNextAction": true
 		},
 		{
 			"id": "2",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "Stop hurting her!"
+			"action": "Change Character",
+			"value": "Monster",
+			"emotion": "Monster_Sad"
 		},
 		{
 			"id": "3",
-			"action": "Hide Textbox",
-			"playNextAction": true
+			"action": "Talk",
+			"name": "YOU",
+			"value": "When was the last time you tried to understand her? When was the last time you treated her with kindness? Did you even bother talking to her? Asking if she was okay?"
 		},
 		{
 			"id": "4",
-			"action": "Ask Name"
+			"action": "Talk",
+			"name": "YOU",
+			"value": "Or did you just assume she was cursed and cast her aside like she was never even part of the village?"
 		},
 		{
 			"id": "5",
-			"action": "Talk",
-			"name": "YOU",
-			"value": "I'm [Name], and I have a request."
+			"action": "Hide Textbox"
 		},
 		{
 			"id": "6",
+			"action": "Hide Character",
+			"value": "Monster",
+			"emotion": "Monster_Sad",
+			"playNextAction": true
+		},
+		{
+			"id": "7",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "We need to help her. There's still time. We can still make things right."
+		},
+		{
+			"id": "8",
+			"action": "Stop Sound",
+			"playNextAction": true
+		},
+		{
+			"id": "9",
+			"action": "Talk",
+			"name": "GRAND ELDER",
+			"value": "You <i>dare</i> question my authority? You would challenge the choices I made?"
+		},
+		{
+			"id": "10",
+			"action": "Talk",
+			"name": "GRAND ELDER",
+			"value": "You ungrateful brat! If you want to save this monster – you will have to go through me."
+		},
+		{
+			"id": "11",
+			"action": "Play Sound Loop",
+			"value": "Combat",
+			"playNextAction": true
+		},
+		{
+			"id": "12",
 			"action": "Change Scene",
 			"value": "Combat"
 		}

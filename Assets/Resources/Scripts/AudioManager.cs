@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource[] audioSources = new AudioSource[2];
 
+    private bool currentlyFading = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -51,12 +53,19 @@ public class AudioManager : MonoBehaviour
 
     IEnumerator FadeAudio(bool fadeIn)
     {
+        while (currentlyFading)
+        {
+            yield return null;
+        }
+
         float time = 0;
         float duration = 3f;
         float finalVolume = 0.3f;
 
         if (fadeIn)
         {
+            currentlyFading = true;
+
             audioSources[0].volume = 0;
 
             audioSources[0].Play();
@@ -69,9 +78,13 @@ public class AudioManager : MonoBehaviour
             }
 
             audioSources[0].volume = finalVolume;
+
+            currentlyFading = false;
         }
         else
         {
+            currentlyFading = true;
+
             while (time < duration)
             {
                 audioSources[0].volume = Mathf.Lerp(finalVolume, 0f, time / duration);
@@ -82,6 +95,8 @@ public class AudioManager : MonoBehaviour
             audioSources[0].volume = 0f;
 
             audioSources[0].Stop();
+
+            currentlyFading = false;
         }
     }
 }
