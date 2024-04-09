@@ -75,6 +75,8 @@ public class Talk : MonoBehaviour
         {
             StartCoroutine(Fade.FadeMethod(nameBox.GetComponent<Image>(), false));
 
+            textBox.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "";
+
             nameBoxOnScreen = false;
         }
     }
