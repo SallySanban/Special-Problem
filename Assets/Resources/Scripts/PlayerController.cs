@@ -127,6 +127,8 @@ public class PlayerController : NetworkBehaviour
             playerHealthBarFillValue.Value = (maxHealthBarWidth / maxPlayerHealth) * playerHealth.Value;
             healthBarFill.localScale = new Vector3(playerHealthBarFillValue.Value, healthBarFill.localScale.y, healthBarFill.localScale.z);
 
+            AudioManager.instance.playSoundEffect("Punch");
+
             AnimatePlayerServerRpc("Hurt");
 
             if (playerHealth.Value <= 0)

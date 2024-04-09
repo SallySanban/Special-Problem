@@ -80,6 +80,8 @@ public class BossController : NetworkBehaviour
             bossHealthBarFillValue.Value = (maxBossHealthBarWidth / maxBossHealth) * bossHealth;
             bossHealthBarFill.localScale = new Vector3(bossHealthBarFillValue.Value, bossHealthBarFill.localScale.y, bossHealthBarFill.localScale.z);
 
+            AudioManager.instance.playSoundEffect("Punch");
+
             gameObject.GetComponent<NetworkAnimator>().SetTrigger("Hurt");
 
             if (bossHealth <= 0)
