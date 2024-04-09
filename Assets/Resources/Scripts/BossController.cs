@@ -16,7 +16,7 @@ public class BossController : NetworkBehaviour
     private bool isFlipped = false;
 
     [SerializeField] public Transform attackPoint;
-    public float attackRange = 0.2f;
+    public float attackRange = 0.94f;
     private int damage = 20;
 
     private NetworkVariable<float> bossHealthBarFillValue = new(0);
@@ -62,16 +62,6 @@ public class BossController : NetworkBehaviour
         Collider2D hitPlayer = Physics2D.OverlapCircle(attackPoint.position, attackRange, LayerMask.GetMask("Player"));
 
         if (hitPlayer == null) return;
-
-        //if (hitPlayer.TryGetComponent(out Rigidbody2D rb))
-        //{
-        //    Vector2 move = (hitPlayer.transform.position - transform.position).normalized;
-        //    float strength = 3f;
-
-        //    rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-
-        //    rb.AddForce(move * strength, ForceMode2D.Impulse);
-        //}
 
         if (hitPlayer.TryGetComponent(out PlayerController playerController))
         {
