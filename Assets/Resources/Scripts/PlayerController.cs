@@ -22,6 +22,9 @@ public class PlayerController : NetworkBehaviour
 
     public NetworkVariable<bool> playerActive = new(true);
 
+    private NetworkVariable<bool> isHurt = new(false);
+    private NetworkVariable<bool> isDead = new(false);
+
     private void Start()
     {
         healthBarFill = healthBar.transform.GetChild(1).transform;
@@ -45,6 +48,8 @@ public class PlayerController : NetworkBehaviour
         if (playerActive.Value == false) return;
 
         if (GameObject.FindGameObjectWithTag("Boss") == null) return;
+
+        if(isHurt.Value == true || isDead.Value == true) return;
 
         Vector3 move = new Vector3(0, 0, 0);
 
@@ -91,16 +96,22 @@ public class PlayerController : NetworkBehaviour
         }
         else if (animation == "Hurt")
         {
+            UpdateIsHurtServerRpc(true);
+
             gameObject.GetComponent<NetworkAnimator>().SetTrigger("Hurt");
         }
         else if (animation == "Die")
         {
+            UpdateIsDeadServerRpc(true);
+
             gameObject.GetComponent<NetworkAnimator>().SetTrigger("Die");
 
             RevivePlayerClientRpc();
         }
         else if (animation == "Revive")
         {
+            UpdateIsDeadServerRpc(false);
+
             gameObject.GetComponent<NetworkAnimator>().SetTrigger("Revive");
         }
     }
@@ -147,6 +158,18 @@ public class PlayerController : NetworkBehaviour
     private void UpdatePlayerActiveServerRpc(bool activeStatus)
     {
         playerActive.Value = activeStatus;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void UpdateIsHurtServerRpc(bool hurtStatus)
+    {
+        isHurt.Value = hurtStatus;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void UpdateIsDeadServerRpc(bool deadStatus)
+    {
+        isDead.Value = deadStatus;
     }
 
     [ServerRpc(RequireOwnership = false)]
