@@ -10,6 +10,7 @@ using Unity.Netcode;
 public class RelayManager : MonoBehaviour
 {
     [SerializeField] GameObject lobbyUI;
+    [SerializeField] GameObject grass;
 
     public static RelayManager Instance;
 
@@ -34,6 +35,7 @@ public class RelayManager : MonoBehaviour
             NetworkManager.Singleton.StartHost();
 
             lobbyUI.SetActive(false);
+            grass.SetActive(true);
 
             return joinCode;
         }
@@ -57,6 +59,7 @@ public class RelayManager : MonoBehaviour
             NetworkManager.Singleton.StartClient();
 
             lobbyUI.SetActive(false);
+            grass.SetActive(true);
         }
         catch(RelayServiceException e)
         {
