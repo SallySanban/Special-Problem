@@ -40,6 +40,8 @@ public class AudioManager : MonoBehaviour
     //audioSource[1] is for sound effects
     public void playSoundEffect(string sound)
     {
+        audioSources[1].Stop();
+
         audioSources[1].clip = Resources.Load<AudioClip>("Music/" + sound);
         audioSources[1].loop = false;
 

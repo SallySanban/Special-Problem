@@ -8,12 +8,22 @@
 		},
 		{
 			"id": "2",
+			"action": "Ask Name"
+		},
+		{
+			"id": "3",
+			"action": "Talk",
+			"name": "GRAND ELDER",
+			"value": "You ungrateful brat! If you want to save this monster – you will have to go through me."
+		},
+		{
+			"id": "4",
 			"action": "Play Sound Loop",
 			"value": "Combat",
 			"playNextAction": true
 		},
 		{
-			"id": "3",
+			"id": "5",
 			"action": "Change Scene",
 			"value": "Combat"
 		}

@@ -127,7 +127,7 @@ public class PlayerController : NetworkBehaviour
             playerHealthBarFillValue.Value = (maxHealthBarWidth / maxPlayerHealth) * playerHealth.Value;
             healthBarFill.localScale = new Vector3(playerHealthBarFillValue.Value, healthBarFill.localScale.y, healthBarFill.localScale.z);
 
-            AudioManager.instance.playSoundEffect("Punch");
+            PlayPunchClientRpc();
 
             AnimatePlayerServerRpc("Hurt");
 
@@ -154,6 +154,12 @@ public class PlayerController : NetworkBehaviour
     private void RevivePlayerClientRpc()
     {
         StartCoroutine(Revive());
+    }
+
+    [ClientRpc]
+    private void PlayPunchClientRpc()
+    {
+        AudioManager.instance.playSoundEffect("Punch");
     }
 
     [ServerRpc(RequireOwnership = false)]

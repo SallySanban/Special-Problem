@@ -80,7 +80,7 @@ public class BossController : NetworkBehaviour
             bossHealthBarFillValue.Value = (maxBossHealthBarWidth / maxBossHealth) * bossHealth;
             bossHealthBarFill.localScale = new Vector3(bossHealthBarFillValue.Value, bossHealthBarFill.localScale.y, bossHealthBarFill.localScale.z);
 
-            AudioManager.instance.playSoundEffect("Punch");
+            PlayPunchClientRpc();
 
             gameObject.GetComponent<NetworkAnimator>().SetTrigger("Hurt");
 
@@ -96,6 +96,12 @@ public class BossController : NetworkBehaviour
     private void DecreaseHealthBar(float previousValue, float newValue)
     {
         bossHealthBarFill.localScale = new Vector3(bossHealthBarFillValue.Value, bossHealthBarFill.localScale.y, bossHealthBarFill.localScale.z);
+    }
+
+    [ClientRpc]
+    private void PlayPunchClientRpc()
+    {
+        AudioManager.instance.playSoundEffect("Punch");
     }
 
     IEnumerator Wait()
