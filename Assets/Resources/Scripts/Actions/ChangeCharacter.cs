@@ -17,8 +17,6 @@ public class ChangeCharacter : MonoBehaviour
     {
         currentCharacter = ShowHideCharacter.instance.character;
 
-        StartCoroutine(Fade.FadeMethod(currentCharacter, false));
-
         StartCoroutine(SwitchCharacter(filename, emotion));
     }
 
@@ -35,6 +33,8 @@ public class ChangeCharacter : MonoBehaviour
 
     IEnumerator SwitchCharacter(string filename, string emotion)
     {
+        yield return StartCoroutine(Fade.FadeMethod(currentCharacter, false));
+
         yield return new WaitForSeconds(0.5f);
 
         ShowHideCharacter.instance.ShowHideCharacterMethod(filename, emotion, true);

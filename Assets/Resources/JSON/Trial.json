@@ -3,31 +3,31 @@
 		{
 			"id": "1",
 			"action": "Show Text",
-			"value": "Press space or enter to continue"
+			"value": "CHAPTER III"
 		},
 		{
 			"id": "2",
-			"action": "Play Sound Loop",
-			"value": "Raining and Thunder",
+			"action": "Change Background",
+			"value": "Street",
 			"playNextAction": true
 		},
 		{
 			"id": "3",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "<i>I hope this is the right place...</i>"
+			"value": "<i>I'm... I'm back at the village!</i>"
 		},
 		{
 			"id": "4",
-			"action": "Change Background",
-			"value": "Raining Forest",
-			"playNextAction": true
+			"action": "Talk",
+			"name": "YOU",
+			"value": "<i>...Wait, Eloise!</i>"
 		},
 		{
 			"id": "5",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "<i>It's been such a long journey... Please don't fail me now.</i>"
+			"value": "<i>I need to find Eloise!</i>"
 		},
 		{
 			"id": "6",
@@ -36,13 +36,158 @@
 		},
 		{
 			"id": "7",
-			"action": "Ask Name"
+			"action": "Play Sound Effect",
+			"value": "Footsteps"
 		},
 		{
 			"id": "8",
+			"action": "Show Character",
+			"value": "Elder",
+			"emotion": "Elder_Angry",
+			"playNextAction": true
+		},
+		{
+			"id": "9",
 			"action": "Talk",
 			"name": "YOU",
-			"value": "I'm [Name], and I have a request."
+			"value": "Grand Elder!"
+		},
+		{
+			"id": "10",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "Grand Elder, you have to help me! I need to find Eloise. Please. You must have some spell that can show me. Please, tell me where she is!"
+		},
+		{
+			"id": "11",
+			"action": "Talk",
+			"name": "GRAND ELDER",
+			"value": "You mean you don't know yet, child? That monster is wreaking havoc in the entire village! It has brought the curse upon us!"
+		},
+		{
+			"id": "12",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "<i>Monster? What monster?</i>"
+		},
+		{
+			"id": "13",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "What are you talking about?"
+		},
+		{
+			"id": "14",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "<i>Eloise is not a monster...</i>"
+		},
+		{
+			"id": "15",
+			"action": "Talk",
+			"name": "GRAND ELDER",
+			"value": "The gods have revealed to me through a spell that the cursed one will destroy our village if it isn't stopped. This is what you're here for, [Name]. You must protect us from its curse!"
+		},
+		{
+			"id": "16",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "Stop! Eloise isn't cursed! And she's not a monster!"
+		},
+		{
+			"id": "17",
+			"action": "Talk",
+			"name": "GRAND ELDER",
+			"value": "See for yourself, child!"
+		},
+		{
+			"id": "18",
+			"action": "Hide Textbox",
+			"playNextAction": true
+		},
+		{
+			"id": "19",
+			"action": "Change Character",
+			"value": "Monster",
+			"emotion": "Monster_Sad"
+		},
+		{
+			"id": "20",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "<i>No... It couldn't be.</i>"
+		},
+		{
+			"id": "21",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "...Eloise?"
+		},
+		{
+			"id": "22",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "<i>She was being surrounded by the people of the village. But she wasn't attacking. She was letting them hurt her. Almost as if... she wanted them to.</i>"
+		},
+		{
+			"id": "23",
+			"action": "Play Sound Effect",
+			"value": "Monster Scream"
+		},
+		{
+			"id": "24",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "<i>Her scream... It sounded... sad. Scared.</i>"
+		},
+		{
+			"id": "25",
+			"action": "Talk",
+			"name": "GRAND ELDER",
+			"value": "Now's your chance, [Name]! Kill it!"
+		},
+		{
+			"id": "26",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "<i>It's Eloise.</i>"
+		},
+		{
+			"id": "27",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "...No."
+		},
+		{
+			"id": "28",
+			"action": "Change Character",
+			"value": "Elder",
+			"emotion": "Elder_Angry",
+			"playNextAction": true
+		},
+		{
+			"id": "29",
+			"action": "Talk",
+			"name": "GRAND ELDER",
+			"value": "[Name], have you gone mad? That <i>thing</i> is–"
+		},
+		{
+			"id": "30",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "Still my friend! Look at her, she's not hurting anyone at all! She's cowering in fear!"
+		},
+		{
+			"id": "31",
+			"action": "Talk",
+			"name": "GRAND ELDER",
+			"value": "It doesn't matter! This unsightly beast – it's a threat to the village!"
+		},
+		{
+			"id": "32",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "But why? She doesn't deserve this! Just because her magic is weak, doesn't mean she should be treated any less than human!"
 		}
 	]
 }
