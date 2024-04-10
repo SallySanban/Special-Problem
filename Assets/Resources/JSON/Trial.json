@@ -2,30 +2,47 @@
 	"actions": [
 		{
 			"id": "1",
-			"action": "Talk",
-			"name": "GRAND ELDER",
-			"value": "You ungrateful brat! If you want to save this monster – you will have to go through me."
+			"action": "Show Text",
+			"value": "Press space or enter to continue"
 		},
 		{
 			"id": "2",
-			"action": "Ask Name"
+			"action": "Play Sound Loop",
+			"value": "Raining and Thunder",
+			"playNextAction": true
 		},
 		{
 			"id": "3",
 			"action": "Talk",
-			"name": "GRAND ELDER",
-			"value": "You ungrateful brat! If you want to save this monster – you will have to go through me."
+			"name": "YOU",
+			"value": "<i>I hope this is the right place...</i>"
 		},
 		{
 			"id": "4",
-			"action": "Play Sound Loop",
-			"value": "Combat",
+			"action": "Change Background",
+			"value": "Raining Forest",
 			"playNextAction": true
 		},
 		{
 			"id": "5",
-			"action": "Change Scene",
-			"value": "Combat"
+			"action": "Talk",
+			"name": "YOU",
+			"value": "<i>It's been such a long journey... Please don't fail me now.</i>"
+		},
+		{
+			"id": "6",
+			"action": "Hide Textbox",
+			"playNextAction": true
+		},
+		{
+			"id": "7",
+			"action": "Ask Name"
+		},
+		{
+			"id": "8",
+			"action": "Talk",
+			"name": "YOU",
+			"value": "I'm [Name], and I have a request."
 		}
 	]
 }
