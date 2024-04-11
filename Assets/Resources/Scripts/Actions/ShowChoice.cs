@@ -6,8 +6,8 @@ public class ShowChoice : MonoBehaviour
 {
     public static ShowChoice instance;
 
-    [SerializeField] GameObject choicesGroup;
     [SerializeField] Choice choiceTemplate;
+    [SerializeField] GameObject choicesGroup;
 
     public bool choicesOnScreen;
 
