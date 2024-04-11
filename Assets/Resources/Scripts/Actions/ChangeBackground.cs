@@ -13,7 +13,7 @@ public class ChangeBackground : MonoBehaviour
     {
         instance = this;
 
-        background.gameObject.SetActive(false);
+        background.gameObject.SetActive(true);
     }
 
     public void ChangeBackgroundMethod(string filename)
