@@ -30,14 +30,14 @@ public class ActionManager : MonoBehaviour
         }
         else
         {
-            actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Main"));
+            actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Trial"));
         }
-
-        doAction(mainActionId); //start with the 1st id
     }
 
     private void Update()
     {
+        if (!MainMenu.instance.gameStarted) return;
+
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !AskName.instance.inputFieldOnScreen && !ShowChoice.instance.choicesOnScreen && !Popup.instance.popupOnScreen && !Talk.instance.textTypewriter.isBuilding && !Fade.currentlyFading && !Flash.instance.currentlyFlashing)
         {
             if (ShowText.instance.textOnScreen)
@@ -124,6 +124,9 @@ public class ActionManager : MonoBehaviour
                 break;
             case "Show Notification":
                 StartCoroutine(ShowNotification.instance.ShowNotificationMethod(actionToPlay.value));
+                break;
+            case "Show Button":
+                ShowHideButton.instance.ShowHideButtonMethod(true);
                 break;
         }
 

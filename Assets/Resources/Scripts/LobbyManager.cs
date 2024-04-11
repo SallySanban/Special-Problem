@@ -76,6 +76,11 @@ public class LobbyManager : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
+    public static void SignOut()
+    {
+        AuthenticationService.Instance.SignOut();
+    }
+
     private async void StartGame()
     {
         try

@@ -165,7 +165,12 @@
 		{
 			"id": "29",
 			"action": "Show Text",
-			"value": "THE END"
+			"value": "THE END",
+			"playNextAction": true
+		},
+		{
+			"id": "30",
+			"action": "Show Button"
 		}
 	]
 }

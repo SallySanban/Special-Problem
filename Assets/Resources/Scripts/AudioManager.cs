@@ -48,12 +48,12 @@ public class AudioManager : MonoBehaviour
         audioSources[1].Play();
     }
 
-    public void stopSoundLoop()
+    public void stopSoundLoop(float duration = 3f)
     {
-        StartCoroutine(FadeAudio(false));
+        StartCoroutine(FadeAudio(false, duration));
     }
 
-    IEnumerator FadeAudio(bool fadeIn)
+    IEnumerator FadeAudio(bool fadeIn, float duration = 3f)
     {
         while (currentlyFading)
         {
@@ -61,7 +61,6 @@ public class AudioManager : MonoBehaviour
         }
 
         float time = 0;
-        float duration = 3f;
         float finalVolume = 0.3f;
 
         if (fadeIn)
