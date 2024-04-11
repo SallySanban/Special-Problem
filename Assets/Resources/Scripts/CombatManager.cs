@@ -10,6 +10,7 @@ public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
     [SerializeField] private GameObject bossPrefab;
+    [SerializeField] private GameObject deathScreen;
     [SerializeField] public GameObject deathCount;
 
     private Vector3 bossPosition = new Vector3(6.37f, 1.43f, 0);
@@ -73,7 +74,7 @@ public class CombatManager : MonoBehaviour
 
     public IEnumerator ShowDeathScreen()
     {
-        deathCount.SetActive(true);
+        deathScreen.SetActive(true);
 
         int seconds = 5;
 
@@ -86,6 +87,6 @@ public class CombatManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
-        deathCount.SetActive(false);
+        deathScreen.SetActive(false);
     }
 }

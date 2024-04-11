@@ -593,8 +593,6 @@ MonoBehaviour:
   nameText: {fileID: 142385746217449433}
   playerActive:
     m_InternalValue: 1
-  isDead:
-    m_InternalValue: 0
 --- !u!114 &199854915222384865
 MonoBehaviour:
   m_ObjectHideFlags: 0
