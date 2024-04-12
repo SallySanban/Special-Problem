@@ -2,24 +2,33 @@ using System.Collections;
 using UnityEngine;
 using Unity.Netcode;
 using Unity.Netcode.Components;
-using UnityEngine.SceneManagement;
 
 public class BossController : NetworkBehaviour
 {
+    public static BossController instance;
+
     private GameObject bossHealthBar;
-    private Transform bossHealthBarFill;
+    public Transform bossHealthBarFill;
 
-    private int maxBossHealth = (Player.choicesIncorrect <= 0) ? 100 : 100 * Player.choicesIncorrect;
-    private float maxBossHealthBarWidth;
-
-    private int bossHealth;
+    public int maxBossHealth = (Player.choicesIncorrect <= 0) ? 400 : 500 * Player.choicesIncorrect;
+    public float maxBossHealthBarWidth;
+    
+    public int bossHealth;
     private bool isFlipped = false;
+
+    public int healthCheckpointIncrement;
+    public int bossHealthCheckpoint;
 
     [SerializeField] public Transform attackPoint;
     public float attackRange = 0.94f;
     private int damage = 20;
 
     private NetworkVariable<float> bossHealthBarFillValue = new(0);
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -29,6 +38,10 @@ public class BossController : NetworkBehaviour
         maxBossHealthBarWidth = bossHealthBarFill.localScale.x;
 
         bossHealth = maxBossHealth;
+
+        healthCheckpointIncrement = maxBossHealth / 5;
+
+        bossHealthCheckpoint = maxBossHealth;
     }
 
     public override void OnNetworkSpawn()
@@ -73,16 +86,32 @@ public class BossController : NetworkBehaviour
     {
         if (!IsServer) return;
 
-        if(bossHealth > 0)
+        if (bossHealth > 0)
         {
-            bossHealth = bossHealth - damage;
+            if(bossHealth - damage <= 0)
+            {
+                bossHealth = 0;
+            }
+            else
+            {
+                bossHealth = bossHealth - damage;
+            }
+            
+            Debug.Log("BOSS HEALTH: " + bossHealth);
 
             bossHealthBarFillValue.Value = (maxBossHealthBarWidth / maxBossHealth) * bossHealth;
-            bossHealthBarFill.localScale = new Vector3(bossHealthBarFillValue.Value, bossHealthBarFill.localScale.y, bossHealthBarFill.localScale.z);
+            bossHealthBarFill.localScale = new Vector3(bossHealthBarFillValue.Value, bossHealthBarFill.localScale.y, bossHealthBarFill.localScale.z); //decreases health of server boss
 
-            PlayPunchClientRpc();
+            //PlayPunchClientRpc();
 
             gameObject.GetComponent<NetworkAnimator>().SetTrigger("Hurt");
+
+            if(bossHealth <= (bossHealthCheckpoint - healthCheckpointIncrement) && bossHealth != 0 && bossHealth != maxBossHealth)
+            {
+                bossHealthCheckpoint = bossHealthCheckpoint - healthCheckpointIncrement;
+
+                ShowChoice();
+            }
 
             if (bossHealth <= 0)
             {
@@ -93,6 +122,17 @@ public class BossController : NetworkBehaviour
         }
     }
 
+    public void MaxBossHealthBar()
+    {
+        bossHealth = maxBossHealth;
+
+        bossHealthBarFillValue.Value = (maxBossHealthBarWidth / maxBossHealth) * bossHealth;
+        bossHealthBarFill.localScale = new Vector3(maxBossHealthBarWidth, bossHealthBarFill.localScale.y, bossHealthBarFill.localScale.z);
+
+        bossHealthCheckpoint = bossHealthCheckpoint + healthCheckpointIncrement;
+    }
+
+    //decreases health of client boss
     private void DecreaseHealthBar(float previousValue, float newValue)
     {
         bossHealthBarFill.localScale = new Vector3(bossHealthBarFillValue.Value, bossHealthBarFill.localScale.y, bossHealthBarFill.localScale.z);
@@ -102,6 +142,13 @@ public class BossController : NetworkBehaviour
     private void PlayPunchClientRpc()
     {
         AudioManager.instance.playSoundEffect("Punch");
+    }
+
+    private void ShowChoice()
+    {
+        int combatPromptId = bossHealthCheckpoint / healthCheckpointIncrement;
+
+        CombatPromptsManager.instance.ShowPromptClientRpc(combatPromptId);
     }
 
     IEnumerator Wait()

@@ -6,6 +6,7 @@ public class JSONReader : MonoBehaviour
 {
     public static Action[] actionList;
     public static Tip[] tipList;
+    public static CombatPrompt[] combatPromptList;
 
     public static Action[] getActions(TextAsset jsonFile)
     {
@@ -28,5 +29,14 @@ public class JSONReader : MonoBehaviour
         }
 
         return tipList;
+    }
+
+    public static CombatPrompt[] getCombatPrompts(TextAsset jsonFile)
+    {
+        CombatPrompts jsonCombatPrompts = JsonUtility.FromJson<CombatPrompts>(jsonFile.text);
+
+        combatPromptList = jsonCombatPrompts.combatPrompts;
+
+        return combatPromptList;
     }
 }

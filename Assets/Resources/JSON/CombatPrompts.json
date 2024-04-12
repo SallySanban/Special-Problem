@@ -1,0 +1,37 @@
+{
+	"combatPrompts": [
+		{
+			"id": 1,
+			"prompt": "AAAAA",
+			"choices": [
+				"*AAA",
+				"AA"
+			]
+		},
+		{
+			"id": 2,
+			"prompt": "BBBBB",
+			"choices": [
+				"BBB",
+				"*BB"
+			]
+		},
+		{
+			"id": 3,
+			"prompt": "CCCCC",
+			"choices": [
+				"*CCC",
+				"CC"
+			]
+		},
+		{
+			"id": 4,
+			"prompt": "DDDDD",
+			"choices": [
+				"DDD",
+				"*DD"
+			]
+		}
+	]
+}
+ 

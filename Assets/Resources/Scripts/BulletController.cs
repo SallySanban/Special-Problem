@@ -4,7 +4,7 @@ using Unity.Netcode;
 public class BulletController : NetworkBehaviour
 {
     private float speed = 20f;
-    private int damage = 20;
+    public static int damage = 5;
 
     public Rigidbody2D bullet;
 
@@ -16,6 +16,8 @@ public class BulletController : NetworkBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!IsServer) return;
+
+        Debug.Log("PLAYER DAMAGE: " + damage);
 
         if (collision.CompareTag("Boss"))
         {

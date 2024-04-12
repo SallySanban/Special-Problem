@@ -25,10 +25,14 @@ public class PlayerController : NetworkBehaviour
     private NetworkVariable<bool> isHurt = new(false);
     private NetworkVariable<bool> isDead = new(false);
 
+    public NetworkVariable<int> pickedChoice = new(-1); //1 for correct, 0 for incorrect, 2 for not yet picked
+
     private void Start()
     {
         healthBarFill = healthBar.transform.GetChild(1).transform;
         maxHealthBarWidth = healthBarFill.localScale.x;
+
+        UpdatePickedChoiceServerRpc(-1);
     }
 
     private void Update()
@@ -50,6 +54,12 @@ public class PlayerController : NetworkBehaviour
         if (GameObject.FindGameObjectWithTag("Boss") == null) return;
 
         if(isHurt.Value == true || isDead.Value == true) return;
+
+        if (CombatPromptsManager.instance.combatPromptOnScreen)
+        {
+            AnimatePlayerServerRpc("Idle");
+            return;
+        }
 
         Vector3 move = new Vector3(0, 0, 0);
 
@@ -127,7 +137,7 @@ public class PlayerController : NetworkBehaviour
             playerHealthBarFillValue.Value = (maxHealthBarWidth / maxPlayerHealth) * playerHealth.Value;
             healthBarFill.localScale = new Vector3(playerHealthBarFillValue.Value, healthBarFill.localScale.y, healthBarFill.localScale.z);
 
-            PlayPunchClientRpc();
+            //PlayPunchClientRpc();
 
             AnimatePlayerServerRpc("Hurt");
 
@@ -178,6 +188,12 @@ public class PlayerController : NetworkBehaviour
     private void UpdateIsDeadServerRpc(bool deadStatus)
     {
         isDead.Value = deadStatus;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void UpdatePickedChoiceServerRpc(int choice)
+    {
+        pickedChoice.Value = choice;
     }
 
     [ServerRpc(RequireOwnership = false)]

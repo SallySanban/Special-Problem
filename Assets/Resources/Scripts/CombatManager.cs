@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
+
     [SerializeField] private GameObject bossPrefab;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] public GameObject deathCount;
@@ -48,7 +49,16 @@ public class CombatManager : MonoBehaviour
 
         if (boss != null)
         {
-            boss.GetComponent<Animator>().SetInteger("noPlayers", activePlayers.Count);
+            if (CombatPromptsManager.instance.combatPromptOnScreen)
+            {
+                boss.GetComponent<Animator>().SetInteger("noPlayers", 0);
+                boss.GetComponent<Animator>().ResetTrigger("Hurt");
+                boss.GetComponent<Animator>().ResetTrigger("Attack");
+            }
+            else
+            {
+                boss.GetComponent<Animator>().SetInteger("noPlayers", activePlayers.Count);
+            }
         }
     }
 
