@@ -4994,9 +4994,9 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1585820599}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: readInputField
+      - m_Target: {fileID: 1620135168}
+        m_TargetAssemblyTypeName: AskName, Assembly-CSharp
+        m_MethodName: ReadInputField
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

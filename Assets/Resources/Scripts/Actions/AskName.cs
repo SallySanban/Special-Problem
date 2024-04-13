@@ -39,6 +39,20 @@ public class AskName : MonoBehaviour
         }
     }
 
+    public void ReadInputField(string input)
+    {
+        if (input == "")
+        {
+            Player.playerName = "Player";
+        }
+        else
+        {
+            Player.playerName = input;
+        }
+
+        Debug.Log(Player.playerName);
+    }
+
     public void AskNameMethod()
     {
         ShowHideInputField(true);
