@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 1738438249370304066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.37, y: -1.05, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5024941463448454431}
@@ -286,6 +286,13 @@ MonoBehaviour:
     TransitionIndex: 2
   - IsCrossFadeExit: 0
     Layer: 0
+    OriginatingState: -1467898420
+    DestinationState: -1289218877
+    TransitionDuration: 0
+    TriggerNameHash: 1740614436
+    TransitionIndex: 1
+  - IsCrossFadeExit: 0
+    Layer: 0
     OriginatingState: 177026988
     DestinationState: 767212628
     TransitionDuration: 0.25
@@ -298,6 +305,20 @@ MonoBehaviour:
     TransitionDuration: 0
     TriggerNameHash: 1740614436
     TransitionIndex: 2
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: -1289218877
+    DestinationState: 767212628
+    TransitionDuration: 0
+    TriggerNameHash: 20298039
+    TransitionIndex: 0
+  - IsCrossFadeExit: 0
+    Layer: 0
+    OriginatingState: -1289218877
+    DestinationState: 177026988
+    TransitionDuration: 0.25
+    TriggerNameHash: 1080829965
+    TransitionIndex: 3
   m_Animator: {fileID: 122665757736123427}
 --- !u!114 &8966060719107107810
 MonoBehaviour:
@@ -311,6 +332,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8305441d887d7449f6dc5f8eecaf8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossHealthBarFill: {fileID: 0}
+  maxBossHealth: 400
+  maxBossHealthBarWidth: 0
+  bossHealth: 0
+  healthCheckpointIncrement: 0
+  bossHealthCheckpoint: 0
   attackPoint: {fileID: 5024941463448454431}
   attackRange: 0.94
 --- !u!1 &2245978157055472370
