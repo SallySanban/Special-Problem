@@ -154,7 +154,7 @@ public class PlayerController : NetworkBehaviour
             playerHealthBarFillValue.Value = (maxHealthBarWidth / maxPlayerHealth) * playerHealth.Value;
             healthBarFill.localScale = new Vector3(playerHealthBarFillValue.Value, healthBarFill.localScale.y, healthBarFill.localScale.z);
 
-            //BossController.instance.PlaySoundEffectClientRpc("Punch");
+            BossController.instance.PlaySoundEffectClientRpc("Punch");
 
             AnimatePlayerServerRpc("Hurt");
 
