@@ -33,9 +33,9 @@ public class ShowHeart : MonoBehaviour
 
     public void ShowHeartMethod()
     {
-        Player.choicesIncorrect--;
+        PlayerData.choicesIncorrect--;
 
-        Debug.Log("CHOICES CORRECT: " + Player.choicesIncorrect);
+        Debug.Log("CHOICES CORRECT: " + PlayerData.choicesIncorrect);
 
         ShowHideHeart(true);
 

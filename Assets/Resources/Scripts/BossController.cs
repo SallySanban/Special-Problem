@@ -31,8 +31,8 @@ public class BossController : NetworkBehaviour
     {
         instance = this;
 
-        bossSize = (Player.choicesIncorrect <= 0) ? 0.4f : 0.4f + (Player.choicesIncorrect * 0.02f);
-        maxBossHealth = (Player.choicesIncorrect <= 0) ? 400 : 500 * Player.choicesIncorrect;
+        bossSize = (PlayerData.choicesIncorrect <= 0) ? 0.4f : 0.4f + (PlayerData.choicesIncorrect * 0.02f);
+        maxBossHealth = (PlayerData.choicesIncorrect <= 0) ? 400 : 500 * PlayerData.choicesIncorrect;
     }
 
     private void Start()

@@ -101,7 +101,7 @@ public class Talk : MonoBehaviour
 
         if (dialogue.Contains("[Name]"))
         {
-            line = dialogue.Replace("[Name]", Player.playerName);
+            line = dialogue.Replace("[Name]", PlayerData.playerName);
         }
         else
         {

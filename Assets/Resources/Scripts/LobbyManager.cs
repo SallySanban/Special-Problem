@@ -52,12 +52,12 @@ public class LobbyManager : MonoBehaviour
     {
         InitializationOptions initializationOptions = new InitializationOptions();
 
-        if(Player.playerName == "")
+        if(PlayerData.playerName == "")
         {
-            Player.playerName = "Player";
+            PlayerData.playerName = "Player";
         }
 
-        string filteredName = Regex.Replace(Player.playerName, "[^a-zA-Z0-9]", "");
+        string filteredName = Regex.Replace(PlayerData.playerName, "[^a-zA-Z0-9]", "");
 
         if (filteredName.Length > 30)
         {
@@ -70,7 +70,7 @@ public class LobbyManager : MonoBehaviour
 
         AuthenticationService.Instance.SignedIn += () =>
         {
-            Debug.Log("Signed in Player Id: " + AuthenticationService.Instance.PlayerId + " Player Name: " + Player.playerName);
+            Debug.Log("Signed in Player Id: " + AuthenticationService.Instance.PlayerId + " Player Name: " + PlayerData.playerName);
         };
 
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
@@ -133,7 +133,7 @@ public class LobbyManager : MonoBehaviour
                 Data = new Dictionary<string, DataObject>()
                 {
                     {
-                        "BossLevel", new DataObject(DataObject.VisibilityOptions.Public, Player.choicesIncorrect.ToString(), DataObject.IndexOptions.N1)
+                        "BossLevel", new DataObject(DataObject.VisibilityOptions.Public, PlayerData.choicesIncorrect.ToString(), DataObject.IndexOptions.N1)
                     },
                     {
                         "JoinCodeKey", new DataObject(DataObject.VisibilityOptions.Public, "0")
@@ -166,7 +166,7 @@ public class LobbyManager : MonoBehaviour
                 Player = GetPlayer(),
                 Filter = new List<QueryFilter>
                 {
-                    new QueryFilter(QueryFilter.FieldOptions.N1, Player.choicesIncorrect.ToString(), QueryFilter.OpOptions.EQ)
+                    new QueryFilter(QueryFilter.FieldOptions.N1, PlayerData.choicesIncorrect.ToString(), QueryFilter.OpOptions.EQ)
                 }
             };
 
@@ -211,7 +211,7 @@ public class LobbyManager : MonoBehaviour
 
         playerList.Clear();
 
-        foreach (Unity.Services.Lobbies.Models.Player player in lobby.Players)
+        foreach (Player player in lobby.Players)
         {
             GameObject playerNamePlate = Instantiate(playerNameTemplate, playerNameParent);
 
@@ -222,14 +222,14 @@ public class LobbyManager : MonoBehaviour
         }
     }
 
-    private Unity.Services.Lobbies.Models.Player GetPlayer()
+    private Player GetPlayer()
     {
-        return new Unity.Services.Lobbies.Models.Player
+        return new Player
         {
             Data = new Dictionary<string, PlayerDataObject>
                 {
                     {
-                        "PlayerName", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Public, Player.playerName)
+                        "PlayerName", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Public, PlayerData.playerName)
                     }
                 }
         };

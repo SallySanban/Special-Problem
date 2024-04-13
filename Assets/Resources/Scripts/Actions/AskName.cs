@@ -43,14 +43,14 @@ public class AskName : MonoBehaviour
     {
         if (input == "")
         {
-            Player.playerName = "Player";
+            PlayerData.playerName = "Player";
         }
         else
         {
-            Player.playerName = input;
+            PlayerData.playerName = input;
         }
 
-        Debug.Log(Player.playerName);
+        Debug.Log(PlayerData.playerName);
     }
 
     public void AskNameMethod()
