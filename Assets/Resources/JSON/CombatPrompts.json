@@ -2,34 +2,34 @@
 	"combatPrompts": [
 		{
 			"id": 1,
-			"prompt": "AAAAA",
+			"prompt": "If Eloise weren't so selfish, this never would have happened! She would never have turned into a monster!",
 			"choices": [
-				"*AAA",
-				"AA"
+				"*She isn't selfish, she's struggling",
+				"She should've thought about the village more"
 			]
 		},
 		{
 			"id": 2,
-			"prompt": "BBBBB",
+			"prompt": "We work hard to teach everyone about their magic every day, but she still lost hers! Instead of feeling alone and sorry for herself, she should be grateful!",
 			"choices": [
-				"BBB",
-				"*BB"
+				"She should just get over it",
+				"*Her experiences are important"
 			]
 		},
 		{
 			"id": 3,
-			"prompt": "CCCCC",
+			"prompt": "Eloise used to be the top in the village school! Then she began slacking off, and that's what made her lose her magic! She isn't working hard enough!",
 			"choices": [
-				"*CCC",
-				"CC"
+				"*She's doing the best she can",
+				"You're right, she's lazy"
 			]
 		},
 		{
 			"id": 4,
-			"prompt": "DDDDD",
+			"prompt": "It's Eloise's own fault she lost her magic! Everyone in the village has magic, so she must be going crazy!",
 			"choices": [
-				"DDD",
-				"*DD"
+				"She lost her magic because she's crazy",
+				"*Losing her magic doesn't make her crazy"
 			]
 		}
 	]

@@ -107,7 +107,7 @@ public class BossController : NetworkBehaviour
             bossHealthBarFillValue.Value = (maxBossHealthBarWidth / maxBossHealth) * bossHealth;
             bossHealthBarFill.localScale = new Vector3(bossHealthBarFillValue.Value, bossHealthBarFill.localScale.y, bossHealthBarFill.localScale.z); //decreases health of server boss
 
-            //PlayPunchClientRpc();
+            //PlaySoundEffectClientRpc("Punch");
 
             gameObject.GetComponent<NetworkAnimator>().SetTrigger("Hurt");
 
@@ -144,9 +144,9 @@ public class BossController : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void PlayPunchClientRpc()
+    public void PlaySoundEffectClientRpc(string soundEffect)
     {
-        AudioManager.instance.playSoundEffect("Punch");
+        AudioManager.instance.playSoundEffect(soundEffect);
     }
 
     private void ShowChoice()

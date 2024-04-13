@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using Unity.Netcode;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class CombatPromptsManager : NetworkBehaviour
 {
@@ -13,13 +13,18 @@ public class CombatPromptsManager : NetworkBehaviour
     [SerializeField] TextMeshProUGUI promptText;
     [SerializeField] CombatChoice combatChoiceTemplate;
     [SerializeField] public GameObject combatChoiceGroup;
-    [SerializeField] public TextMeshProUGUI waitText;
+    [SerializeField] public TextMeshProUGUI resultText;
+    [SerializeField] TextMeshProUGUI counter;
 
     public List<CombatChoice> listOfCombatChoices = new List<CombatChoice>();
 
     private CombatPrompt[] combatPrompts;
 
     public bool combatPromptOnScreen = false;
+
+    private int numPlayers = 0;
+
+    public bool allPlayersAnswered;
 
     private void Awake()
     {
@@ -32,7 +37,9 @@ public class CombatPromptsManager : NetworkBehaviour
     public void ShowPromptClientRpc(int id)
     {
         combatPromptsScreen.SetActive(true);
-        waitText.gameObject.SetActive(false);
+        promptText.gameObject.SetActive(true);
+        resultText.gameObject.SetActive(false);
+        counter.gameObject.SetActive(false);
 
         combatPromptOnScreen = true;
 
@@ -69,6 +76,32 @@ public class CombatPromptsManager : NetworkBehaviour
         combatPromptOnScreen = false;
     }
 
+    [ClientRpc]
+    private void ShowResultTextClientRpc(int numWrongPlayers)
+    {
+        if (numWrongPlayers == 0) //correct answer
+        {
+            resultText.text = "Congratulations!\nEveryone chose correctly!";
+        }
+        else
+        {
+            if(numPlayers == 1)
+            {
+                resultText.text = "Oh no!\nYou chose incorrectly!";
+            }
+            else if(numPlayers > 1 && numWrongPlayers == 1)
+            {
+                resultText.text = "Oh no!\n" + numWrongPlayers.ToString() + " person chose incorrectly!";
+            }
+            else
+            {
+                resultText.text = "Oh no!\n" + numWrongPlayers.ToString() + " people chose incorrectly!";
+            }
+        }
+
+        StartCoroutine(WaitWhileReading());
+    }
+
     public CombatPrompt getPromptFromId(int id)
     {
         foreach (CombatPrompt prompt in combatPrompts)
@@ -85,8 +118,9 @@ public class CombatPromptsManager : NetworkBehaviour
     private IEnumerator WaitForAnswers()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        numPlayers = players.Length;
 
-        bool allPlayersAnswered = false;
+        allPlayersAnswered = false;
 
         while (!allPlayersAnswered)
         {
@@ -114,20 +148,29 @@ public class CombatPromptsManager : NetworkBehaviour
 
         if (allPlayersAnswered)
         {
+            int wrongPlayersCount = 0;
+
             foreach (GameObject p in players)
             {
                 if (p.GetComponent<PlayerController>().pickedChoice.Value == 0)
                 {
+                    wrongPlayersCount++;
                     atLeastOnePlayerAnsweredWrong = true;
                 }
             }
 
             if (atLeastOnePlayerAnsweredWrong)
             {
+                BossController.instance.PlaySoundEffectClientRpc("Wrong");
+                ShowResultTextClientRpc(wrongPlayersCount);
+
                 BossController.instance.MaxBossHealthBar();
             }
             else
             {
+                BossController.instance.PlaySoundEffectClientRpc("Correct");
+                ShowResultTextClientRpc(wrongPlayersCount);
+
                 foreach (GameObject p in players)
                 {
                     PlayerController playerController = p.GetComponent<PlayerController>();
@@ -138,11 +181,34 @@ public class CombatPromptsManager : NetworkBehaviour
             }
         }
 
+        yield return new WaitForSeconds(3f);
+
         foreach (GameObject p in players)
         {
             p.GetComponent<PlayerController>().UpdatePickedChoiceServerRpc(-1);
         }
 
         HidePromptClientRpc();
+    }
+
+    private IEnumerator WaitWhileReading()
+    {
+        counter.gameObject.SetActive(true);
+        promptText.gameObject.SetActive(false);
+
+        int seconds = 3;
+
+        while (seconds > 0)
+        {
+            counter.text = seconds.ToString();
+
+            seconds--;
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        counter.gameObject.SetActive(false);
+
+        resultText.text = "Waiting for other players...";
     }
 }

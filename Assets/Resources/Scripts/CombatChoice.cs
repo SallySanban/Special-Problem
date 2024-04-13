@@ -31,7 +31,7 @@ public class CombatChoice : Button
 
         CombatPromptsManager.instance.listOfCombatChoices.Clear();
 
-        CombatPromptsManager.instance.waitText.gameObject.SetActive(true);
+        CombatPromptsManager.instance.resultText.gameObject.SetActive(true);
 
         if (isCorrectChoice)
         {

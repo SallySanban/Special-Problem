@@ -3,8 +3,6 @@ using UnityEngine;
 using Unity.Netcode;
 using TMPro;
 using Unity.Netcode.Components;
-using UnityEngine.UI;
-using System;
 
 public class PlayerController : NetworkBehaviour
 {
@@ -156,7 +154,7 @@ public class PlayerController : NetworkBehaviour
             playerHealthBarFillValue.Value = (maxHealthBarWidth / maxPlayerHealth) * playerHealth.Value;
             healthBarFill.localScale = new Vector3(playerHealthBarFillValue.Value, healthBarFill.localScale.y, healthBarFill.localScale.z);
 
-            //PlayPunchClientRpc();
+            //BossController.instance.PlaySoundEffectClientRpc("Punch");
 
             AnimatePlayerServerRpc("Hurt");
 
@@ -196,12 +194,6 @@ public class PlayerController : NetworkBehaviour
     private void RevivePlayerClientRpc()
     {
         StartCoroutine(Revive());
-    }
-
-    [ClientRpc]
-    private void PlayPunchClientRpc()
-    {
-        AudioManager.instance.playSoundEffect("Punch");
     }
 
     [ServerRpc(RequireOwnership = false)]
