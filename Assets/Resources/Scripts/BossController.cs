@@ -8,16 +8,18 @@ public class BossController : NetworkBehaviour
     public static BossController instance;
 
     private GameObject bossHealthBar;
-    public Transform bossHealthBarFill;
+    private Transform bossHealthBarFill;
 
-    public int maxBossHealth = (Player.choicesIncorrect <= 0) ? 400 : 500 * Player.choicesIncorrect;
-    public float maxBossHealthBarWidth;
+    public float bossSize;
+
+    private int maxBossHealth;
+    private float maxBossHealthBarWidth;
     
-    public int bossHealth;
+    private int bossHealth;
     private bool isFlipped = false;
 
-    public int healthCheckpointIncrement;
-    public int bossHealthCheckpoint;
+    private int healthCheckpointIncrement;
+    private int bossHealthCheckpoint;
 
     [SerializeField] public Transform attackPoint;
     public float attackRange = 0.94f;
@@ -28,6 +30,9 @@ public class BossController : NetworkBehaviour
     private void Awake()
     {
         instance = this;
+
+        bossSize = (Player.choicesIncorrect <= 0) ? 0.4f : 0.4f + (Player.choicesIncorrect * 0.02f);
+        maxBossHealth = (Player.choicesIncorrect <= 0) ? 400 : 500 * Player.choicesIncorrect;
     }
 
     private void Start()
@@ -97,7 +102,7 @@ public class BossController : NetworkBehaviour
                 bossHealth = bossHealth - damage;
             }
             
-            //Debug.Log("BOSS HEALTH: " + bossHealth);
+            Debug.Log("BOSS HEALTH: " + bossHealth);
 
             bossHealthBarFillValue.Value = (maxBossHealthBarWidth / maxBossHealth) * bossHealth;
             bossHealthBarFill.localScale = new Vector3(bossHealthBarFillValue.Value, bossHealthBarFill.localScale.y, bossHealthBarFill.localScale.z); //decreases health of server boss
