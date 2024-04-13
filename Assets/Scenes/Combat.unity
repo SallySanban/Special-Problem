@@ -1405,6 +1405,7 @@ MonoBehaviour:
   counter: {fileID: 1527738437}
   listOfCombatChoices: []
   combatPromptOnScreen: 0
+  allPlayersAnswered: 0
 --- !u!114 &933785240
 MonoBehaviour:
   m_ObjectHideFlags: 0
