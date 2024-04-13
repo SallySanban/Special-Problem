@@ -18,12 +18,32 @@
 		},
 		{
 			"id": "4",
+			"action": "Show Heart"
+		},
+		{
+			"id": "5",
+			"action": "Show Heart"
+		},
+		{
+			"id": "6",
+			"action": "Show Heart"
+		},
+		{
+			"id": "7",
+			"action": "Show Heart"
+		},
+		{
+			"id": "8",
+			"action": "Show Heart"
+		},
+		{
+			"id": "9",
 			"action": "Play Sound Loop",
 			"value": "Combat",
 			"playNextAction": true
 		},
 		{
-			"id": "5",
+			"id": "10",
 			"action": "Change Scene",
 			"value": "Combat"
 		}

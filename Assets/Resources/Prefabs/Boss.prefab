@@ -205,9 +205,9 @@ MonoBehaviour:
   SyncRotAngleX: 0
   SyncRotAngleY: 1
   SyncRotAngleZ: 0
-  SyncScaleX: 0
-  SyncScaleY: 0
-  SyncScaleZ: 0
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
   PositionThreshold: 0.001
   RotAngleThreshold: 0.01
   ScaleThreshold: 0.01
@@ -332,12 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8305441d887d7449f6dc5f8eecaf8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossHealthBarFill: {fileID: 0}
-  maxBossHealth: 400
-  maxBossHealthBarWidth: 0
-  bossHealth: 0
-  healthCheckpointIncrement: 0
-  bossHealthCheckpoint: 0
+  bossSize: 0.5
   attackPoint: {fileID: 5024941463448454431}
   attackRange: 0.94
 --- !u!1 &2245978157055472370

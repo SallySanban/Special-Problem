@@ -151,7 +151,7 @@ public class PlayerController : NetworkBehaviour
         if(playerHealth.Value > 0)
         {
             playerHealth.Value = playerHealth.Value - damage;
-            //Debug.Log("PLAYER HEALTH: " + playerHealth.Value);
+            Debug.Log("PLAYER HEALTH: " + playerHealth.Value);
 
             playerHealthBarFillValue.Value = (maxHealthBarWidth / maxPlayerHealth) * playerHealth.Value;
             healthBarFill.localScale = new Vector3(playerHealthBarFillValue.Value, healthBarFill.localScale.y, healthBarFill.localScale.z);

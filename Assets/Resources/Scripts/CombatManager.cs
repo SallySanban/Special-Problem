@@ -67,6 +67,7 @@ public class CombatManager : MonoBehaviour
         NetworkManager.Singleton.OnServerStarted -= SpawnBoss;
 
         boss = Instantiate(bossPrefab, bossPosition, Quaternion.Euler(0f, 180f, 0f));
+        boss.transform.localScale = new Vector3(BossController.instance.bossSize, BossController.instance.bossSize, BossController.instance.bossSize);
         boss.GetComponent<NetworkObject>().Spawn();
     }
 
