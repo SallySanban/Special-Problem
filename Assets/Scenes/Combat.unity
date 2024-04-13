@@ -1402,6 +1402,7 @@ MonoBehaviour:
   combatChoiceTemplate: {fileID: 780467125}
   combatChoiceGroup: {fileID: 297570074}
   waitText: {fileID: 1076820715}
+  listOfCombatChoices: []
   combatPromptOnScreen: 0
 --- !u!114 &933785240
 MonoBehaviour:

@@ -97,7 +97,7 @@ public class BossController : NetworkBehaviour
                 bossHealth = bossHealth - damage;
             }
             
-            Debug.Log("BOSS HEALTH: " + bossHealth);
+            //Debug.Log("BOSS HEALTH: " + bossHealth);
 
             bossHealthBarFillValue.Value = (maxBossHealthBarWidth / maxBossHealth) * bossHealth;
             bossHealthBarFill.localScale = new Vector3(bossHealthBarFillValue.Value, bossHealthBarFill.localScale.y, bossHealthBarFill.localScale.z); //decreases health of server boss

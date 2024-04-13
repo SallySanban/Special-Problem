@@ -4,7 +4,6 @@ using Unity.Netcode;
 public class BulletController : NetworkBehaviour
 {
     private float speed = 20f;
-    public static int damage = 5;
 
     public Rigidbody2D bullet;
 
@@ -17,7 +16,7 @@ public class BulletController : NetworkBehaviour
     {
         if (!IsServer) return;
 
-        Debug.Log("PLAYER DAMAGE: " + damage);
+        Debug.Log("PLAYER DAMAGE: " + PlayerController.playerPower);
 
         if (collision.CompareTag("Boss"))
         {
@@ -25,7 +24,7 @@ public class BulletController : NetworkBehaviour
 
             if (boss != null)
             {
-                boss.GetDamage(damage);
+                boss.GetDamage(PlayerController.playerPower);
                 DestroyBulletServerRpc();
             }
         }

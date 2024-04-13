@@ -21,9 +21,6 @@ public class CombatPromptsManager : NetworkBehaviour
 
     public bool combatPromptOnScreen = false;
 
-    private int[] playerDamage = { 5, 10, 15, 20, 25 };
-    private int playerDamageIndex = 1;
-
     private void Awake()
     {
         instance = this;
@@ -131,8 +128,13 @@ public class CombatPromptsManager : NetworkBehaviour
             }
             else
             {
-                BulletController.damage = playerDamage[playerDamageIndex];
-                playerDamageIndex++;
+                foreach (GameObject p in players)
+                {
+                    PlayerController playerController = p.GetComponent<PlayerController>();
+
+                    playerController.playerPowerIndex++;
+                    playerController.GetPower(playerController.playerPowerIndex);
+                }
             }
         }
 

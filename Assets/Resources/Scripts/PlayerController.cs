@@ -4,21 +4,31 @@ using Unity.Netcode;
 using TMPro;
 using Unity.Netcode.Components;
 using UnityEngine.UI;
+using System;
 
 public class PlayerController : NetworkBehaviour
 {
     [SerializeField] public Transform firePoint;
     [SerializeField] public GameObject healthBar;
+    [SerializeField] public GameObject powerBar;
     [SerializeField] public GameObject bulletPrefab;
     [SerializeField] public TextMeshProUGUI nameText;
 
     Transform healthBarFill;
+    Transform powerBarFill;
 
     private int maxPlayerHealth = 100;
     private NetworkVariable<int> playerHealth = new(100);
-    private float maxHealthBarWidth;    
-    
+    private float maxHealthBarWidth;
+
+    private int[] playerPowerList = { 5, 10, 15, 20, 25 };
+    public int playerPowerIndex = 0;
+    private int maxPlayerPower;
+    public static int playerPower;
+    private float maxPowerBarWidth;
+
     private NetworkVariable<float> playerHealthBarFillValue = new(0);
+    private NetworkVariable<float> playerPowerBarFillValue = new(0);
 
     public NetworkVariable<bool> playerActive = new(true);
 
@@ -33,6 +43,11 @@ public class PlayerController : NetworkBehaviour
         maxHealthBarWidth = healthBarFill.localScale.x;
 
         UpdatePickedChoiceServerRpc(-1);
+
+        playerPower = playerPowerList[playerPowerIndex];
+        maxPlayerPower = playerPowerList[playerPowerList.Length - 1];
+
+        GetPower(playerPowerIndex);
     }
 
     private void Update()
@@ -42,7 +57,11 @@ public class PlayerController : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+        powerBarFill = powerBar.transform.GetChild(1).transform;
+        maxPowerBarWidth = powerBarFill.localScale.x;
+
         if (!IsServer) playerHealthBarFillValue.OnValueChanged += DecreaseHealthBar;
+        if (!IsServer) playerPowerBarFillValue.OnValueChanged += IncreasePowerBar;
     }
 
     private void ControlPlayer()
@@ -132,7 +151,7 @@ public class PlayerController : NetworkBehaviour
         if(playerHealth.Value > 0)
         {
             playerHealth.Value = playerHealth.Value - damage;
-            Debug.Log("PLAYER HEALTH: " + playerHealth.Value);
+            //Debug.Log("PLAYER HEALTH: " + playerHealth.Value);
 
             playerHealthBarFillValue.Value = (maxHealthBarWidth / maxPlayerHealth) * playerHealth.Value;
             healthBarFill.localScale = new Vector3(playerHealthBarFillValue.Value, healthBarFill.localScale.y, healthBarFill.localScale.z);
@@ -148,9 +167,22 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
+    public void GetPower(int index)
+    {
+        playerPower = playerPowerList[index];
+
+        UpdatePlayerPowerBarFillValueServerRpc();
+        powerBarFill.localScale = new Vector3(playerPowerBarFillValue.Value, powerBarFill.localScale.y, powerBarFill.localScale.z);
+    }
+
     private void DecreaseHealthBar(float previousValue, float newValue)
     {
         healthBarFill.localScale = new Vector3(playerHealthBarFillValue.Value, healthBarFill.localScale.y, healthBarFill.localScale.z);
+    }
+
+    private void IncreasePowerBar(float previousValue, float newValue)
+    {
+        powerBarFill.localScale = new Vector3(playerPowerBarFillValue.Value, powerBarFill.localScale.y, powerBarFill.localScale.z);
     }
 
     [ServerRpc]
@@ -194,6 +226,12 @@ public class PlayerController : NetworkBehaviour
     public void UpdatePickedChoiceServerRpc(int choice)
     {
         pickedChoice.Value = choice;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void UpdatePlayerPowerBarFillValueServerRpc()
+    {
+        playerPowerBarFillValue.Value = (maxPowerBarWidth / maxPlayerPower) * playerPower;
     }
 
     [ServerRpc(RequireOwnership = false)]
