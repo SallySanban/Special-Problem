@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class LookAtCamera : MonoBehaviour
 {
-    private Transform mainCamera;
-
-    private void Start()
-    {
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
-    }
-
     private void Update()
     {
-        if(mainCamera != null)
+        if (Input.GetKey(KeyCode.A))
         {
-            transform.LookAt(2 * transform.position - mainCamera.position);
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
         }
     }
 }
