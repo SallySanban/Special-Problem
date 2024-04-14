@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Image mainMenuScreen;
     [SerializeField] GameObject buttonsGroup;
     [SerializeField] Button newGame;
+    [SerializeField] GameObject disclaimerPopup;
+    [SerializeField] Button disclaimerContinue;
     [SerializeField] Button instructions;
     [SerializeField] GameObject instructionsScreen;
     [SerializeField] Button credits;
@@ -26,7 +29,8 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        newGame.onClick.AddListener(StartGame);
+        newGame.onClick.AddListener(ShowDisclaimer);
+        disclaimerContinue.onClick.AddListener(StartGame);
         instructions.onClick.AddListener(ShowInstructions);
         credits.onClick.AddListener(ShowCredits);
         exitCredits.onClick.AddListener(HideCredits);
@@ -47,10 +51,16 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    private void ShowDisclaimer()
+    {
+        disclaimerPopup.SetActive(true);
+    }
+
     private void StartGame()
     {
         mainMenuScreen.gameObject.SetActive(false);
         buttonsGroup.gameObject.SetActive(false);
+        disclaimerPopup.SetActive(false);
 
         ActionManager.instance.doAction(ActionManager.instance.mainActionId); //start with the 1st id
 
