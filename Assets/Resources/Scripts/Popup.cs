@@ -43,7 +43,12 @@ public class Popup : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && popupOnScreen == false)
         {
-            var wordIndex = TMP_TextUtilities.FindIntersectingLink(clickedText, Input.mousePosition, camera);
+            int wordIndex = -1;
+
+            if (clickedText.gameObject.activeInHierarchy)
+            {
+                wordIndex = TMP_TextUtilities.FindIntersectingLink(clickedText, Input.mousePosition, camera);
+            }
 
             if (wordIndex != -1)
             {
