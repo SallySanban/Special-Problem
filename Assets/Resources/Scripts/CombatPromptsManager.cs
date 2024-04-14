@@ -164,12 +164,16 @@ public class CombatPromptsManager : NetworkBehaviour
                 BossController.instance.PlaySoundEffectClientRpc("Wrong");
                 ShowResultTextClientRpc(wrongPlayersCount);
 
+                yield return new WaitForSeconds(3f);
+
                 BossController.instance.MaxBossHealthBar();
             }
             else
             {
                 BossController.instance.PlaySoundEffectClientRpc("Correct");
                 ShowResultTextClientRpc(wrongPlayersCount);
+
+                yield return new WaitForSeconds(3f);
 
                 foreach (GameObject p in players)
                 {
@@ -180,8 +184,6 @@ public class CombatPromptsManager : NetworkBehaviour
                 }
             }
         }
-
-        yield return new WaitForSeconds(3f);
 
         foreach (GameObject p in players)
         {
