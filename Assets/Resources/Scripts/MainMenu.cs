@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Button disclaimerContinue;
     [SerializeField] Button instructions;
     [SerializeField] GameObject instructionsScreen;
+    [SerializeField] Button exitInstructions;
     [SerializeField] Button credits;
     [SerializeField] GameObject creditsScreen;
     [SerializeField] Button exitCredits;
@@ -32,6 +33,7 @@ public class MainMenu : MonoBehaviour
         newGame.onClick.AddListener(ShowDisclaimer);
         disclaimerContinue.onClick.AddListener(StartGame);
         instructions.onClick.AddListener(ShowInstructions);
+        exitInstructions.onClick.AddListener(HideInstructions);
         credits.onClick.AddListener(ShowCredits);
         exitCredits.onClick.AddListener(HideCredits);
         exit.onClick.AddListener(ExitGame);
@@ -69,7 +71,12 @@ public class MainMenu : MonoBehaviour
 
     private void ShowInstructions()
     {
+        instructionsScreen.gameObject.SetActive(true);
+    }
 
+    public void HideInstructions()
+    {
+        instructionsScreen.SetActive(false);
     }
 
     private void ShowCredits()
