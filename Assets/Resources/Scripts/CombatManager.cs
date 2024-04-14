@@ -3,10 +3,9 @@ using Unity.Netcode;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.Netcode.Transports.UTP;
 using UnityEngine.SceneManagement;
 
-public class CombatManager : MonoBehaviour
+public class CombatManager : NetworkBehaviour
 {
     public static CombatManager Instance;
 
@@ -20,6 +19,8 @@ public class CombatManager : MonoBehaviour
     public List<GameObject> activePlayers = new List<GameObject>();
     public bool addingPlayers = false;
 
+    //private bool done = false;
+
     GameObject boss;
 
     private void Awake()
@@ -31,6 +32,8 @@ public class CombatManager : MonoBehaviour
 
     private void Update()
     {
+        if (!IsServer) return;
+
         players = GameObject.FindGameObjectsWithTag("Player");
 
         addingPlayers = true;
@@ -46,6 +49,17 @@ public class CombatManager : MonoBehaviour
         }
 
         addingPlayers = false;
+
+        //if (PlayerController.done && !done)
+        //{
+        //    Debug.Log("NAME");
+        //    foreach (GameObject p in players)
+        //    {
+        //        Debug.Log(p.GetComponent<PlayerController>().playerName.Value);
+        //    }
+
+        //    done = true;
+        //}
 
         if (boss != null)
         {
@@ -73,7 +87,7 @@ public class CombatManager : MonoBehaviour
 
     public void EndScene()
     {
-        if (!NetworkManager.Singleton.IsServer) return;
+        if (!IsServer) return;
 
         foreach (GameObject p in players)
         {

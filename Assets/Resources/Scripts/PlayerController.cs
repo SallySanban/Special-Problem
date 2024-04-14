@@ -3,6 +3,8 @@ using UnityEngine;
 using Unity.Netcode;
 using TMPro;
 using Unity.Netcode.Components;
+using Unity.Collections;
+using System;
 
 public class PlayerController : NetworkBehaviour
 {
@@ -35,6 +37,10 @@ public class PlayerController : NetworkBehaviour
 
     public NetworkVariable<int> pickedChoice = new(-1); //1 for correct, 0 for incorrect, 2 for not yet picked
 
+    public NetworkVariable<FixedString32Bytes> playerName = new();
+
+    public static bool done = false;
+
     private void Start()
     {
         healthBarFill = healthBar.transform.GetChild(1).transform;
@@ -46,6 +52,14 @@ public class PlayerController : NetworkBehaviour
         maxPlayerPower = playerPowerList[playerPowerList.Length - 1];
 
         GetPower(playerPowerIndex);
+
+        if (IsOwner)
+        {
+            Debug.Log("I AM OWNER AND MY NAME IS " + PlayerData.playerName);
+            UpdatePlayerNameServerRpc(PlayerData.playerName);
+        }
+
+        done = true;
     }
 
     private void Update()
@@ -224,6 +238,13 @@ public class PlayerController : NetworkBehaviour
     public void UpdatePlayerPowerBarFillValueServerRpc()
     {
         playerPowerBarFillValue.Value = (maxPowerBarWidth / maxPlayerPower) * playerPower;
+    }
+
+    [ServerRpc]
+    private void UpdatePlayerNameServerRpc(string name)
+    {
+        playerName.Value = name;
+        nameText.text = playerName.Value.ToString();
     }
 
     [ServerRpc(RequireOwnership = false)]
