@@ -19,8 +19,6 @@ public class CombatManager : NetworkBehaviour
     public List<GameObject> activePlayers = new List<GameObject>();
     public bool addingPlayers = false;
 
-    //private bool done = false;
-
     GameObject boss;
 
     private void Awake()
@@ -49,17 +47,6 @@ public class CombatManager : NetworkBehaviour
         }
 
         addingPlayers = false;
-
-        //if (PlayerController.done && !done)
-        //{
-        //    Debug.Log("NAME");
-        //    foreach (GameObject p in players)
-        //    {
-        //        Debug.Log(p.GetComponent<PlayerController>().playerName.Value);
-        //    }
-
-        //    done = true;
-        //}
 
         if (boss != null)
         {

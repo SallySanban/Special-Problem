@@ -39,8 +39,6 @@ public class PlayerController : NetworkBehaviour
 
     public NetworkVariable<FixedString32Bytes> playerName = new();
 
-    public static bool done = false;
-
     private void Start()
     {
         healthBarFill = healthBar.transform.GetChild(1).transform;
@@ -52,14 +50,6 @@ public class PlayerController : NetworkBehaviour
         maxPlayerPower = playerPowerList[playerPowerList.Length - 1];
 
         GetPower(playerPowerIndex);
-
-        if (IsOwner)
-        {
-            Debug.Log("I AM OWNER AND MY NAME IS " + PlayerData.playerName);
-            UpdatePlayerNameServerRpc(PlayerData.playerName);
-        }
-
-        done = true;
     }
 
     private void Update()
@@ -74,6 +64,18 @@ public class PlayerController : NetworkBehaviour
 
         if (!IsServer) playerHealthBarFillValue.OnValueChanged += DecreaseHealthBar;
         if (!IsServer) playerPowerBarFillValue.OnValueChanged += IncreasePowerBar;
+
+        playerName.OnValueChanged += OnPlayerNameChanged;
+
+        if (IsOwner)
+        {
+            UpdatePlayerNameServerRpc(PlayerData.playerName);
+        }
+        
+        if(playerName.Value.ToString() != "")
+        {
+            nameText.text = playerName.Value.ToString();
+        }
     }
 
     private void ControlPlayer()
@@ -197,6 +199,11 @@ public class PlayerController : NetworkBehaviour
         powerBarFill.localScale = new Vector3(playerPowerBarFillValue.Value, powerBarFill.localScale.y, powerBarFill.localScale.z);
     }
 
+    private void OnPlayerNameChanged(FixedString32Bytes previousValue, FixedString32Bytes newValue)
+    {
+        nameText.text = newValue.ToString();
+    }
+
     [ServerRpc]
     private void PlayerShootServerRpc()
     {
@@ -244,7 +251,6 @@ public class PlayerController : NetworkBehaviour
     private void UpdatePlayerNameServerRpc(string name)
     {
         playerName.Value = name;
-        nameText.text = playerName.Value.ToString();
     }
 
     [ServerRpc(RequireOwnership = false)]
