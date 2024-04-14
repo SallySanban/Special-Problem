@@ -4784,6 +4784,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 1181760897}
+  inputText: {fileID: 1768323640}
+  placeholderText: {fileID: 1683155964}
   inputFieldOnScreen: 0
 --- !u!114 &1620135169
 MonoBehaviour:
@@ -5613,18 +5615,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: AskName, Assembly-CSharp
         m_MethodName: ReadInputField
         m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1620135168}
-        m_TargetAssemblyTypeName: AskName, Assembly-CSharp
-        m_MethodName: ShowHideInputField
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

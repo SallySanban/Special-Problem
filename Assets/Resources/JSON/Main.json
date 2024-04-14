@@ -3,7 +3,7 @@
 		{
 			"id": "1",
 			"action": "Show Text",
-			"value": "Press space or enter to continue"
+			"value": "Press space to continue"
 		},
 		{
 			"id": "2",

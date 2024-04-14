@@ -30,7 +30,7 @@ public class ActionManager : MonoBehaviour
         }
         else
         {
-            actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Main"));
+            actionList = JSONReader.getActions(Resources.Load<TextAsset>("JSON/Trial"));
         }
     }
 
@@ -38,7 +38,7 @@ public class ActionManager : MonoBehaviour
     {
         if (!MainMenu.instance.gameStarted) return;
 
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !AskName.instance.inputFieldOnScreen && !ShowChoice.instance.choicesOnScreen && !Popup.instance.popupOnScreen && !Talk.instance.textTypewriter.isBuilding && !Fade.currentlyFading && !Flash.instance.currentlyFlashing)
+        if (Input.GetKeyDown(KeyCode.Space) && !AskName.instance.inputFieldOnScreen && !ShowChoice.instance.choicesOnScreen && !Popup.instance.popupOnScreen && !Talk.instance.textTypewriter.isBuilding && !Fade.currentlyFading && !Flash.instance.currentlyFlashing)
         {
             if (ShowText.instance.textOnScreen)
             {
@@ -47,7 +47,7 @@ public class ActionManager : MonoBehaviour
 
             doAction(getNextAction(currentActionId, choiceActionId));
         }
-        else if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !AskName.instance.inputFieldOnScreen && !ShowChoice.instance.choicesOnScreen && !Popup.instance.popupOnScreen && Talk.instance.textTypewriter.isBuilding)
+        else if(Input.GetKeyDown(KeyCode.Space) && !AskName.instance.inputFieldOnScreen && !ShowChoice.instance.choicesOnScreen && !Popup.instance.popupOnScreen && Talk.instance.textTypewriter.isBuilding)
         {
             Talk.instance.textTypewriter.ForceComplete();
         }
@@ -149,7 +149,7 @@ public class ActionManager : MonoBehaviour
         return null;
     }
 
-    private string getNextAction(string currentId, int currentChoiceId)
+    public string getNextAction(string currentId, int currentChoiceId)
     {
         if(insideChoice)
         {

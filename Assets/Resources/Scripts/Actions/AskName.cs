@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System.Text.RegularExpressions;
 
 public class AskName : MonoBehaviour
 {
     public static AskName instance;
 
     [SerializeField] Image inputField;
+    [SerializeField] TMP_InputField inputText;
+    [SerializeField] TextMeshProUGUI placeholderText;
 
     public bool inputFieldOnScreen;
 
@@ -41,16 +45,37 @@ public class AskName : MonoBehaviour
 
     public void ReadInputField(string input)
     {
-        if (input == "")
+        if(input == "")
         {
-            PlayerData.playerName = "Player";
+            inputText.text = "";
+            placeholderText.text = "Name cannot be blank";
+
+            return;
         }
-        else
+        
+        if(!Regex.IsMatch(input, "^[a-zA-Z0-9]*$"))
         {
-            PlayerData.playerName = input;
+            inputText.text = "";
+            placeholderText.text = "Alphanumeric only";
+
+            return;
         }
 
+        if (input.Length > 30)
+        {
+            inputText.text = "";
+            placeholderText.text = "30 characters only";
+
+            return;
+        }
+
+        PlayerData.playerName = input;
+
         Debug.Log(PlayerData.playerName);
+
+        ShowHideInputField(false);
+
+        ActionManager.instance.doAction(ActionManager.instance.getNextAction(ActionManager.instance.currentActionId, ActionManager.instance.choiceActionId));
     }
 
     public void AskNameMethod()
